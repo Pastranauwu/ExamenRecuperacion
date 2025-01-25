@@ -78,4 +78,7 @@ public class Individuo {
      * @return Lista de alimentos seleccionados.
      */
     public List<Alimento> getSeleccion() { return seleccion; }
+    
+
+    public void setSeleccion(List<Alimento> seleccion) { this.seleccion = seleccion; }
 }

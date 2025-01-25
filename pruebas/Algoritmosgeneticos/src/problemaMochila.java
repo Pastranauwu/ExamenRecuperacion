@@ -69,6 +69,7 @@ public class problemaMochila {
             if (mejorGlobal == null || (hilo.getMejorIndividuo() != null &&
                 hilo.getMejorIndividuo().getFitness() > mejorGlobal.getFitness())) {
                 mejorGlobal = hilo.getMejorIndividuo();
+                System.out.println("Mejor solución encontrada en hilo: " + hilo.getMejorIndividuo());
             }
         }
 

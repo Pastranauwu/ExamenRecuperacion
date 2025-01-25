@@ -82,7 +82,7 @@ public class AlgoritmoGenetico implements Runnable {
         if(random.nextInt(10) == 0) {
             poblacion = mutarPoblacion(poblacion);
         } else {
-            poblacion = cruzarPoblacion(poblacion);
+            // poblacion = cruzarPoblacion(poblacion);
         }
         
 
@@ -96,14 +96,64 @@ public class AlgoritmoGenetico implements Runnable {
      * @return La nueva generación de la población.
      */
     private List<Individuo> cruzarPoblacion(List<Individuo> poblacion) {
-        // Implementar lógica de cruce aquí.
-        return poblacion;
+        List<Individuo> nuevaGeneracion = new ArrayList<>();
+        Random random = new Random();
+    
+        // Generar hijos a partir de cruces
+        while (nuevaGeneracion.size() < poblacion.size()) {
+            // Seleccionar dos padres aleatorios
+            Individuo padre1 = poblacion.get(random.nextInt(poblacion.size()));
+            Individuo padre2 = poblacion.get(random.nextInt(poblacion.size()));
+    
+            // Realizar un cruce de un punto
+            List<Alimento> genesPadre1 = padre1.getSeleccion();
+            List<Alimento> genesPadre2 = padre2.getSeleccion();
+    
+            int puntoCorte = random.nextInt(genesPadre1.size());
+    
+            // Crear hijos combinando los genes de ambos padres
+            List<Alimento> genesHijo1 = new ArrayList<>(genesPadre1.subList(0, puntoCorte));
+            genesHijo1.addAll(genesPadre2.subList(puntoCorte, genesPadre2.size()));
+    
+            List<Alimento> genesHijo2 = new ArrayList<>(genesPadre2.subList(0, puntoCorte));
+            genesHijo2.addAll(genesPadre1.subList(puntoCorte, genesPadre1.size()));
+    
+            // Crear los nuevos individuos
+            nuevaGeneracion.add(new Individuo(genesHijo1));
+            if (nuevaGeneracion.size() < poblacion.size()) {
+                nuevaGeneracion.add(new Individuo(genesHijo2));
+            }
+        }
+        return nuevaGeneracion;
     }
 
     public List<Individuo> mutarPoblacion(List<Individuo> poblacion) {
-        // Implementar lógica de mutación aquí.
+        Random random = new Random();
+    
+        for (Individuo individuo : poblacion) {
+            // Probabilidad de mutar cada individuo
+            if (random.nextDouble() < 0.1) { // 10% de probabilidad de mutación
+                List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
+    
+                if (!genes.isEmpty() && random.nextBoolean()) {
+                    // Eliminar un gen (alimento) aleatorio
+                    genes.remove(random.nextInt(genes.size()));
+                } else {
+                    // Agregar un nuevo gen (alimento) aleatorio
+                    Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
+                    if (!genes.contains(nuevoAlimento)) {
+                        genes.add(nuevoAlimento);
+                    }
+                }
+    
+                // Actualizar el individuo con los nuevos genes
+                individuo.setSeleccion(genes);
+            }
+        }
+    
         return poblacion;
     }
+    
 
     /**
      * Obtiene el mejor individuo de la población actual basado en su fitness.
