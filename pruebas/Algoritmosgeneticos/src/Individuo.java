@@ -15,7 +15,7 @@ public class Individuo {
     private static final double CALORIAS_RECOMENDADAS = 2000;
     
     // Penalización por calorías excedidas (valor de ejemplo).
-    private static final double PENALIZACION_CALORIAS = 0.4;
+    private static final double PENALIZACION_CALORIAS = 0.2;
     
     // Peso máximo permitido para la selección de alimentos (valor de ejemplo).
     private static final double MAX_PESO = 200;
@@ -39,21 +39,23 @@ public class Individuo {
      */
     public void calcularFitness() {
         double pesoTotal = 0;
-        double valorTotal = 0;
+        double valorNutricionalTotal = 0;
         double caloriasTotal = 0;
-
+    
         for (Alimento alimento : seleccion) {
             pesoTotal += alimento.getPeso();
-            valorTotal += alimento.getValorNutricional() * alimento.getPreferencia();
+            valorNutricionalTotal += alimento.getValorNutricional() * alimento.getPreferencia();
             caloriasTotal += alimento.getCalorias();
         }
-
+    
         if (pesoTotal > MAX_PESO) {
             fitness = 0; // Penalización por exceder el presupuesto.
         } else {
-            fitness = valorTotal - penalizacionPorCalorias(caloriasTotal);
+            // Ajustar la fórmula para dar más relevancia al valor nutricional
+            fitness = (5 * valorNutricionalTotal) - penalizacionPorCalorias(caloriasTotal);
         }
     }
+    
 
     /**
      * Calcula la penalización por exceder las calorías recomendadas.
@@ -81,4 +83,32 @@ public class Individuo {
 
 
     public void setSeleccion(List<Alimento> seleccion) { this.seleccion = seleccion; calcularFitness();}
+
+    public double getCaloriasTotales() {
+
+        double caloriasTotales = 0.0;
+
+        for (Alimento alimento : getSeleccion()) {
+
+            caloriasTotales += alimento.getCalorias();
+
+        }
+
+        return caloriasTotales;
+
+    }
+
+    public double getValorNutricionalTotal() {
+
+        double valorNutricionalTotal = 0.0;
+
+        for (Alimento alimento : getSeleccion()) {
+
+            valorNutricionalTotal += alimento.getValorNutricional();
+
+        }
+
+        return valorNutricionalTotal;
+
+    }
 }

@@ -22,12 +22,12 @@ public class AlgoritmoGenetico implements Runnable {
     /**
      * Número de generaciones a ejecutar.
      */
-    private static final int GENERACIONES = 400;
+    private static final int GENERACIONES = 1000;
 
     /**
      * Tamaño de la población inicial.
      */
-    private static final int TAMANO_POBLACION = 200;
+    private static final int TAMANO_POBLACION = 300;
 
     /**
      * Constructor que inicializa la lista de alimentos.
@@ -45,10 +45,20 @@ public class AlgoritmoGenetico implements Runnable {
     @Override
     public void run() {
         List<Individuo> poblacion = generarPoblacionInicial();
+        double mejorFitness = 0;
+        Individuo mejorIndividuoAux;
+
         for (int i = 0; i < GENERACIONES; i++) {
             poblacion = evolucionar(poblacion);
+
+            mejorIndividuoAux = obtenerMejorIndividuo(poblacion);
+            if (mejorIndividuoAux.getFitness() > mejorFitness) {
+                mejorFitness = mejorIndividuoAux.getFitness();
+                mejorIndividuo = mejorIndividuoAux;
+            }
+            // System.out.println("Generación " + i + ": Mejor fitness = " + obtenerMejorIndividuo(poblacion).getFitness());
         }
-        mejorIndividuo = obtenerMejorIndividuo(poblacion);
+        // mejorIndividuo = obtenerMejorIndividuo(poblacion);
     }
 
     /**
@@ -117,14 +127,25 @@ public class AlgoritmoGenetico implements Runnable {
                 }
             }
 
-            if (!genesComunes.isEmpty() && random.nextBoolean()) {
-                // Eliminar un gen (alimento) aleatorio
-                genesComunes.remove(random.nextInt(genesComunes.size()));
+            if (random.nextDouble() < 0.5) { // 50% de probabilidad de mutación
+                if (!genesComunes.isEmpty() && random.nextBoolean()) {
+                    // Eliminar un gen (alimento) aleatorio
+                    genesComunes.remove(random.nextInt(genesComunes.size()));
+                } else {
+                    // Agregar un nuevo gen (alimento) aleatorio
+                    Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
+                    if (!genesComunes.contains(nuevoAlimento)) {
+                        genesComunes.add(nuevoAlimento);
+                    }
+                }
             } else {
-                // Agregar un nuevo gen (alimento) aleatorio
-                Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
-                if (!genesComunes.contains(nuevoAlimento)) {
-                    genesComunes.add(nuevoAlimento);
+                // Intercambiar dos genes aleatorios
+                if (genesComunes.size() > 1) {
+                    int index1 = random.nextInt(genesComunes.size());
+                    int index2 = random.nextInt(genesComunes.size());
+                    Alimento temp = genesComunes.get(index1);
+                    genesComunes.set(index1, genesComunes.get(index2));
+                    genesComunes.set(index2, temp);
                 }
             }
 
@@ -139,7 +160,6 @@ public class AlgoritmoGenetico implements Runnable {
 
         for (Individuo individuo : poblacion) {
             if (individuo.getFitness() == 0) {
-                if (random.nextDouble() < 1) { // 100% de probabilidad de mutación
                     List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
 
                     if (!genes.isEmpty() && random.nextBoolean()) {
@@ -152,12 +172,10 @@ public class AlgoritmoGenetico implements Runnable {
                             genes.add(nuevoAlimento);
                         }
                     }
-
                     // Actualizar el individuo con los nuevos genes
                     individuo.setSeleccion(genes);
-                }
             } else {
-                if (random.nextDouble() < 0.15) { // 15% de probabilidad de mutación
+                if (random.nextDouble() < 0.80) { // 15% de probabilidad de mutación
                     List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
 
                     if (!genes.isEmpty() && random.nextBoolean()) {
