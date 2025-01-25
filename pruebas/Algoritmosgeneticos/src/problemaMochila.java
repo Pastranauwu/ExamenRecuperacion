@@ -65,7 +65,7 @@ public class problemaMochila {
         
 
 
-        int numHilos = 4;
+        int numHilos = 8;
         ExecutorService executor = Executors.newFixedThreadPool(numHilos);
         AlgoritmoGenetico[] hilos = new AlgoritmoGenetico[numHilos];
         for (int i = 0; i < numHilos; i++) {

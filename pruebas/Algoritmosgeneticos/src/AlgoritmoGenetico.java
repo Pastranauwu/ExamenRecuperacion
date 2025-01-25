@@ -65,6 +65,7 @@ public class AlgoritmoGenetico implements Runnable {
                 }
             }
             poblacion.add(new Individuo(seleccion));
+
         }
         return poblacion;
     }
@@ -77,14 +78,14 @@ public class AlgoritmoGenetico implements Runnable {
      */
     private List<Individuo> evolucionar(List<Individuo> poblacion) {
         // Implementar cruces, mutaciones y selección aquí.
-        // Random random = new Random();
-        poblacion = mutarPoblacion(poblacion);
+        Random random = new Random();
+        // poblacion = mutarPoblacion(poblacion);
 
-        // if(random.nextInt(2) == 0) {
-        //     poblacion = mutarPoblacion(poblacion);
-        // } else {
-        //     // poblacion = cruzarPoblacion(poblacion);
-        // }
+        if(random.nextInt(2) == 0) {
+            poblacion = mutarPoblacion(poblacion);
+        } else {
+            // poblacion = cruzarPoblacion(poblacion);
+        }
         
 
         return poblacion; // Devuelve la nueva generación.
@@ -102,28 +103,24 @@ public class AlgoritmoGenetico implements Runnable {
     
         // Generar hijos a partir de cruces
         while (nuevaGeneracion.size() < poblacion.size()) {
-            // Seleccionar dos padres aleatorios
-            Individuo padre1 = poblacion.get(random.nextInt(poblacion.size()));
+            //ver quienes son los 2 individuos con mejor fitness y hacer que sean los padres
+            Individuo padre1 = obtenerMejorIndividuo(poblacion);
             Individuo padre2 = poblacion.get(random.nextInt(poblacion.size()));
     
             // Realizar un cruce de un punto
             List<Alimento> genesPadre1 = padre1.getSeleccion();
             List<Alimento> genesPadre2 = padre2.getSeleccion();
-    
-            int puntoCorte = random.nextInt(genesPadre1.size());
-    
-            // Crear hijos combinando los genes de ambos padres
-            List<Alimento> genesHijo1 = new ArrayList<>(genesPadre1.subList(0, puntoCorte));
-            genesHijo1.addAll(genesPadre2.subList(puntoCorte, genesPadre2.size()));
-    
-            List<Alimento> genesHijo2 = new ArrayList<>(genesPadre2.subList(0, puntoCorte));
-            genesHijo2.addAll(genesPadre1.subList(puntoCorte, genesPadre1.size()));
-    
-            // Crear los nuevos individuos
+            
+            int puntoCruce = random.nextInt(Math.min(genesPadre1.size(), genesPadre2.size()));
+            List<Alimento> genesHijo1 = new ArrayList<>(genesPadre1.subList(0, puntoCruce));
+            genesHijo1.addAll(genesPadre2.subList(puntoCruce, genesPadre2.size()));
+            List<Alimento> genesHijo2 = new ArrayList<>(genesPadre2.subList(0, puntoCruce));
+            genesHijo2.addAll(genesPadre1.subList(puntoCruce, genesPadre1.size()));
+
+            // Crear los hijos y añadirlos a la nueva generación
             nuevaGeneracion.add(new Individuo(genesHijo1));
-            if (nuevaGeneracion.size() < poblacion.size()) {
-                nuevaGeneracion.add(new Individuo(genesHijo2));
-            }
+            nuevaGeneracion.add(new Individuo(genesHijo2));
+            
         }
         return nuevaGeneracion;
     }
@@ -135,7 +132,7 @@ public class AlgoritmoGenetico implements Runnable {
             if (individuo.getFitness() == 0) {
                 // System.out.println("Mutando individuo");
                 // Probabilidad de mutar cada individuo
-                if (random.nextDouble() < 1) { // 10% de probabilidad de mutación
+                if (random.nextDouble() < 1) { // 100% de probabilidad de mutación
                     List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
         
                     if (!genes.isEmpty() && random.nextBoolean()) {

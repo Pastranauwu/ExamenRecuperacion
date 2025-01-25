@@ -18,7 +18,7 @@ public class Individuo {
     private static final double PENALIZACION_CALORIAS = 0.4;
     
     // Peso máximo permitido para la selección de alimentos (valor de ejemplo).
-    private static final double MAX_PESO = 200;
+    private static final double MAX_PESO = 400;
 
     /**
      * Constructor de la clase Individuo.
