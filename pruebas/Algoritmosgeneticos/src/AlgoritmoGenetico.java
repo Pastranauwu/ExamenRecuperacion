@@ -3,8 +3,10 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * La clase AlgoritmoGenetico implementa un algoritmo genético para optimizar una solución.
- * Implementa la interfaz Runnable para permitir la ejecución en un hilo separado.
+ * La clase AlgoritmoGenetico implementa un algoritmo genético para optimizar
+ * una solución.
+ * Implementa la interfaz Runnable para permitir la ejecución en un hilo
+ * separado.
  */
 public class AlgoritmoGenetico implements Runnable {
     /**
@@ -20,7 +22,7 @@ public class AlgoritmoGenetico implements Runnable {
     /**
      * Número de generaciones a ejecutar.
      */
-    private static final int GENERACIONES = 300;
+    private static final int GENERACIONES = 400;
 
     /**
      * Tamaño de la población inicial.
@@ -81,12 +83,11 @@ public class AlgoritmoGenetico implements Runnable {
         Random random = new Random();
         // poblacion = mutarPoblacion(poblacion);
 
-        if(random.nextInt(2) == 0) {
+        if (random.nextInt(4) == 0) {
             poblacion = mutarPoblacion(poblacion);
         } else {
-            // poblacion = cruzarPoblacion(poblacion);
+            poblacion = cruzarPoblacion(poblacion);
         }
-        
 
         return poblacion; // Devuelve la nueva generación.
     }
@@ -100,41 +101,47 @@ public class AlgoritmoGenetico implements Runnable {
     private List<Individuo> cruzarPoblacion(List<Individuo> poblacion) {
         List<Individuo> nuevaGeneracion = new ArrayList<>();
         Random random = new Random();
-    
+
         // Generar hijos a partir de cruces
         while (nuevaGeneracion.size() < poblacion.size()) {
-            //ver quienes son los 2 individuos con mejor fitness y hacer que sean los padres
+            // ver quienes son los 2 individuos con mejor fitness y hacer que sean los
+            // padres
             Individuo padre1 = obtenerMejorIndividuo(poblacion);
             Individuo padre2 = poblacion.get(random.nextInt(poblacion.size()));
-    
-            // Realizar un cruce de un punto
-            List<Alimento> genesPadre1 = padre1.getSeleccion();
-            List<Alimento> genesPadre2 = padre2.getSeleccion();
-            
-            int puntoCruce = random.nextInt(Math.min(genesPadre1.size(), genesPadre2.size()));
-            List<Alimento> genesHijo1 = new ArrayList<>(genesPadre1.subList(0, puntoCruce));
-            genesHijo1.addAll(genesPadre2.subList(puntoCruce, genesPadre2.size()));
-            List<Alimento> genesHijo2 = new ArrayList<>(genesPadre2.subList(0, puntoCruce));
-            genesHijo2.addAll(genesPadre1.subList(puntoCruce, genesPadre1.size()));
 
-            // Crear los hijos y añadirlos a la nueva generación
-            nuevaGeneracion.add(new Individuo(genesHijo1));
-            nuevaGeneracion.add(new Individuo(genesHijo2));
-            
+            // verificar que genes tienen en comun
+            List<Alimento> genesComunes = new ArrayList<>();
+            for (Alimento alimento : padre1.getSeleccion()) {
+                if (padre2.getSeleccion().contains(alimento)) {
+                    genesComunes.add(alimento);
+                }
+            }
+
+            if (!genesComunes.isEmpty() && random.nextBoolean()) {
+                // Eliminar un gen (alimento) aleatorio
+                genesComunes.remove(random.nextInt(genesComunes.size()));
+            } else {
+                // Agregar un nuevo gen (alimento) aleatorio
+                Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
+                if (!genesComunes.contains(nuevoAlimento)) {
+                    genesComunes.add(nuevoAlimento);
+                }
+            }
+
+            nuevaGeneracion.add(new Individuo(genesComunes));
+
         }
         return nuevaGeneracion;
     }
 
     public List<Individuo> mutarPoblacion(List<Individuo> poblacion) {
         Random random = new Random();
-    
+
         for (Individuo individuo : poblacion) {
             if (individuo.getFitness() == 0) {
-                // System.out.println("Mutando individuo");
-                // Probabilidad de mutar cada individuo
                 if (random.nextDouble() < 1) { // 100% de probabilidad de mutación
                     List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
-        
+
                     if (!genes.isEmpty() && random.nextBoolean()) {
                         // Eliminar un gen (alimento) aleatorio
                         genes.remove(random.nextInt(genes.size()));
@@ -145,16 +152,33 @@ public class AlgoritmoGenetico implements Runnable {
                             genes.add(nuevoAlimento);
                         }
                     }
-        
+
+                    // Actualizar el individuo con los nuevos genes
+                    individuo.setSeleccion(genes);
+                }
+            } else {
+                if (random.nextDouble() < 0.15) { // 15% de probabilidad de mutación
+                    List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
+
+                    if (!genes.isEmpty() && random.nextBoolean()) {
+                        // Eliminar un gen (alimento) aleatorio
+                        genes.remove(random.nextInt(genes.size()));
+                    } else {
+                        // Agregar un nuevo gen (alimento) aleatorio
+                        Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
+                        if (!genes.contains(nuevoAlimento)) {
+                            genes.add(nuevoAlimento);
+                        }
+                    }
+
                     // Actualizar el individuo con los nuevos genes
                     individuo.setSeleccion(genes);
                 }
             }
         }
-    
+
         return poblacion;
     }
-    
 
     /**
      * Obtiene el mejor individuo de la población actual basado en su fitness.
