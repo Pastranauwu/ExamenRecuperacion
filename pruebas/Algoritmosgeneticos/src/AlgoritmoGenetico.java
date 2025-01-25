@@ -20,12 +20,12 @@ public class AlgoritmoGenetico implements Runnable {
     /**
      * Número de generaciones a ejecutar.
      */
-    private static final int GENERACIONES = 100;
+    private static final int GENERACIONES = 300;
 
     /**
      * Tamaño de la población inicial.
      */
-    private static final int TAMANO_POBLACION = 50;
+    private static final int TAMANO_POBLACION = 200;
 
     /**
      * Constructor que inicializa la lista de alimentos.
@@ -60,7 +60,7 @@ public class AlgoritmoGenetico implements Runnable {
         for (int i = 0; i < TAMANO_POBLACION; i++) {
             List<Alimento> seleccion = new ArrayList<>();
             for (Alimento alimento : alimentos) {
-                if (random.nextBoolean() && alimento.getPreferencia() > 0) {
+                if (random.nextBoolean()) {
                     seleccion.add(alimento);
                 }
             }
@@ -77,13 +77,14 @@ public class AlgoritmoGenetico implements Runnable {
      */
     private List<Individuo> evolucionar(List<Individuo> poblacion) {
         // Implementar cruces, mutaciones y selección aquí.
-        Random random = new Random();
+        // Random random = new Random();
+        poblacion = mutarPoblacion(poblacion);
 
-        if(random.nextInt(10) == 0) {
-            poblacion = mutarPoblacion(poblacion);
-        } else {
-            // poblacion = cruzarPoblacion(poblacion);
-        }
+        // if(random.nextInt(2) == 0) {
+        //     poblacion = mutarPoblacion(poblacion);
+        // } else {
+        //     // poblacion = cruzarPoblacion(poblacion);
+        // }
         
 
         return poblacion; // Devuelve la nueva generación.
@@ -131,23 +132,26 @@ public class AlgoritmoGenetico implements Runnable {
         Random random = new Random();
     
         for (Individuo individuo : poblacion) {
-            // Probabilidad de mutar cada individuo
-            if (random.nextDouble() < 0.1) { // 10% de probabilidad de mutación
-                List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
-    
-                if (!genes.isEmpty() && random.nextBoolean()) {
-                    // Eliminar un gen (alimento) aleatorio
-                    genes.remove(random.nextInt(genes.size()));
-                } else {
-                    // Agregar un nuevo gen (alimento) aleatorio
-                    Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
-                    if (!genes.contains(nuevoAlimento)) {
-                        genes.add(nuevoAlimento);
+            if (individuo.getFitness() == 0) {
+                // System.out.println("Mutando individuo");
+                // Probabilidad de mutar cada individuo
+                if (random.nextDouble() < 1) { // 10% de probabilidad de mutación
+                    List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
+        
+                    if (!genes.isEmpty() && random.nextBoolean()) {
+                        // Eliminar un gen (alimento) aleatorio
+                        genes.remove(random.nextInt(genes.size()));
+                    } else {
+                        // Agregar un nuevo gen (alimento) aleatorio
+                        Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
+                        if (!genes.contains(nuevoAlimento)) {
+                            genes.add(nuevoAlimento);
+                        }
                     }
+        
+                    // Actualizar el individuo con los nuevos genes
+                    individuo.setSeleccion(genes);
                 }
-    
-                // Actualizar el individuo con los nuevos genes
-                individuo.setSeleccion(genes);
             }
         }
     

@@ -15,10 +15,10 @@ public class Individuo {
     private static final double CALORIAS_RECOMENDADAS = 2000;
     
     // Penalización por calorías excedidas (valor de ejemplo).
-    private static final double PENALIZACION_CALORIAS = 0.1;
+    private static final double PENALIZACION_CALORIAS = 0.4;
     
     // Peso máximo permitido para la selección de alimentos (valor de ejemplo).
-    private static final double MAX_PESO = 500;
+    private static final double MAX_PESO = 200;
 
     /**
      * Constructor de la clase Individuo.
@@ -78,7 +78,7 @@ public class Individuo {
      * @return Lista de alimentos seleccionados.
      */
     public List<Alimento> getSeleccion() { return seleccion; }
-    
 
-    public void setSeleccion(List<Alimento> seleccion) { this.seleccion = seleccion; }
+
+    public void setSeleccion(List<Alimento> seleccion) { this.seleccion = seleccion; calcularFitness();}
 }
