@@ -60,7 +60,7 @@ public class AlgoritmoGenetico implements Runnable {
         for (int i = 0; i < TAMANO_POBLACION; i++) {
             List<Alimento> seleccion = new ArrayList<>();
             for (Alimento alimento : alimentos) {
-                if (random.nextBoolean()) {
+                if (random.nextBoolean() && alimento.getPreferencia() > 0) {
                     seleccion.add(alimento);
                 }
             }
@@ -77,7 +77,14 @@ public class AlgoritmoGenetico implements Runnable {
      */
     private List<Individuo> evolucionar(List<Individuo> poblacion) {
         // Implementar cruces, mutaciones y selección aquí.
-        poblacion = cruzarPoblacion(poblacion);
+        Random random = new Random();
+
+        if(random.nextInt(10) == 0) {
+            poblacion = mutarPoblacion(poblacion);
+        } else {
+            poblacion = cruzarPoblacion(poblacion);
+        }
+        
 
         return poblacion; // Devuelve la nueva generación.
     }
