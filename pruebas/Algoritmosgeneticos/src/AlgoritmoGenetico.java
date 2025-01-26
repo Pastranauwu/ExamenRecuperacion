@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class AlgoritmoGenetico implements Runnable {
     private List<Alimento> alimentos;
     private Individuo mejorIndividuo;
-    private static final int GENERACIONES = 1000;
-    private static final int TAMANO_POBLACION = 550;
+    private static final int GENERACIONES = 1200;
+    private static final int TAMANO_POBLACION = 600;
 
     // Para monitoreo
     private List<Double> mejoresFitnessPorGeneracion = new ArrayList<>();
@@ -36,7 +36,7 @@ public class AlgoritmoGenetico implements Runnable {
                 mejorIndividuo = mejorIndividuoAux;
             }
 
-            // // Monitoreo de progreso
+            // Monitoreo de progreso
             // registrarEstadisticas(poblacion, generacion);
         }
     }
@@ -78,9 +78,9 @@ public class AlgoritmoGenetico implements Runnable {
                 .filter(padre2.getSeleccion()::contains)
                 .collect(Collectors.toList());
 
-            int cambios = random.nextInt(3) + 1; // Realizar entre 1 y 3 cambios
+            int cambios = random.nextInt(3) + 1; // Realizar entre 1 y 2 cambios
             for (int i = 0; i < cambios; i++) {
-                if (random.nextDouble() < 0.5 && !genesComunes.isEmpty()) {
+                if (random.nextDouble() < 0.2 && !genesComunes.isEmpty()) {
                     genesComunes.remove(random.nextInt(genesComunes.size()));
                 } else {
                     Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
@@ -98,7 +98,7 @@ public class AlgoritmoGenetico implements Runnable {
     private List<Individuo> mutarPoblacion(List<Individuo> poblacion) {
         Random random = new Random();
         for (Individuo individuo : poblacion) {
-            if (random.nextDouble() < 0.15) {
+            if (random.nextDouble() < 0.7) {
                 List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
                 if (!genes.isEmpty() && random.nextBoolean()) {
                     genes.remove(random.nextInt(genes.size()));

@@ -1,7 +1,10 @@
 {
-    "java.project.sourcePaths": ["src"],
+    "java.project.sourcePaths": [
+        "src"
+    ],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ]
+        "/home/poetauv/WorckSpace/Proyectos/AlgoritmosGeneticos/pruebas/json-simple-1.1.1.jar"
+    ],
+    "java.project.explorer.showNonJavaResources": false
 }

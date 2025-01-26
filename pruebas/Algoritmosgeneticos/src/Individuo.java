@@ -15,10 +15,10 @@ public class Individuo {
     private static final double CALORIAS_RECOMENDADAS = 2000;
     
     // Penalización por calorías excedidas (valor de ejemplo).
-    private static final double PENALIZACION_CALORIAS = 0.3;
+    private static final double PENALIZACION_CALORIAS = 0.7;
     
     // Peso máximo permitido para la selección de alimentos (valor de ejemplo).
-    private static final double MAX_PESO = 700;
+    private static final double MAX_PESO = 200;
 
     /**
      * Constructor de la clase Individuo.
@@ -52,7 +52,7 @@ public class Individuo {
             fitness = 0; // Penalización por exceder el presupuesto.
         } else {
             // Ajustar la fórmula para dar más relevancia al valor nutricional
-            fitness = (5 * valorNutricionalTotal) - penalizacionPorCalorias(caloriasTotal);
+            fitness = (8 * valorNutricionalTotal) - penalizacionPorCalorias(caloriasTotal);
         }
     }
     
