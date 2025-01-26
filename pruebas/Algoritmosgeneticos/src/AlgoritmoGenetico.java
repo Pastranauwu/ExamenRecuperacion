@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -10,7 +12,7 @@ import java.util.stream.Collectors;
 public class AlgoritmoGenetico implements Runnable {
     private List<Alimento> alimentos;
     private Individuo mejorIndividuo;
-    private static final int GENERACIONES = 1200;
+    private static final int GENERACIONES = 1200; 
     private static final int TAMANO_POBLACION = 600;
 
     // Para monitoreo
@@ -35,9 +37,11 @@ public class AlgoritmoGenetico implements Runnable {
                 mejorFitness = mejorIndividuoAux.getFitness();
                 mejorIndividuo = mejorIndividuoAux;
             }
-
             // Monitoreo de progreso
-            // registrarEstadisticas(poblacion, generacion);
+            if (generacion % 100 == 0) {
+                registrarEstadisticas(poblacion, generacion);
+                System.out.println("Generación: " + generacion + " diversidad " + calcularDiversidad(poblacion) );
+            }
         }
     }
 
@@ -45,7 +49,7 @@ public class AlgoritmoGenetico implements Runnable {
         List<Individuo> poblacion = new ArrayList<>();
         Random random = new Random();
         for (int i = 0; i < TAMANO_POBLACION; i++) {
-            List<Alimento> seleccion = new ArrayList<>();
+            List<Alimento> seleccion = new ArrayList<>(); 
             for (Alimento alimento : alimentos) {
                 if (random.nextBoolean()) {
                     seleccion.add(alimento);
@@ -58,7 +62,7 @@ public class AlgoritmoGenetico implements Runnable {
 
     private List<Individuo> evolucionar(List<Individuo> poblacion) {
         Random random = new Random();
-        if (random.nextInt(4) == 0) {
+        if (random.nextInt(2) == 0) {
             poblacion = mutarPoblacion(poblacion);
         } else {
             poblacion = cruzarPoblacion(poblacion);
@@ -119,16 +123,15 @@ public class AlgoritmoGenetico implements Runnable {
     }
 
     private void registrarEstadisticas(List<Individuo> poblacion, int generacion) {
-        double mejorFitness = poblacion.stream().mapToDouble(Individuo::getFitness).max().orElse(0);
         double promedioFitness = poblacion.stream().mapToDouble(Individuo::getFitness).average().orElse(0);
-        double diversidad = calcularDiversidad(poblacion);
 
-        mejoresFitnessPorGeneracion.add(mejorFitness);
         promedioFitnessPorGeneracion.add(promedioFitness);
-        diversidadPorGeneracion.add(diversidad);
 
-        System.out.printf("Generación %d: Mejor Fitness: %.2f, Promedio Fitness: %.2f, Diversidad: %.2f%n",
-            generacion, mejorFitness, promedioFitness, diversidad);
+        try (FileWriter writer = new FileWriter("estadisticas.txt", true)) {
+            writer.write(String.format("Generación %d: Promedio Fitness: %.2f - Hilo: %s%n", generacion, promedioFitness, Thread.currentThread().getName()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private double calcularDiversidad(List<Individuo> poblacion) {
