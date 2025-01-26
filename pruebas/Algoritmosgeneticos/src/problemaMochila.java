@@ -32,7 +32,7 @@ public class problemaMochila {
     public static void main(String[] args) throws Exception {
         List<Alimento> alimentos = new ArrayList<>();
         JSONParser parser = new JSONParser();
-        FileReader reader = new FileReader("/home/poetauv/WorckSpace/Proyectos/AlgoritmosGeneticos/pruebas/Algoritmosgeneticos/src/alimentos.json");
+        FileReader reader = new FileReader("src/alimentos.json");
         Object obj = parser.parse(reader);
         JSONObject pJsonObj = (JSONObject)obj;
         JSONArray array = (JSONArray)pJsonObj.get("alimentos");
