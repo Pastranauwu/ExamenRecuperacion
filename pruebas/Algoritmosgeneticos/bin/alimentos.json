@@ -318,21 +318,21 @@
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.2
         },
         {
             "nombre": "Tacos de Camarón",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.1
         },
         {
             "nombre": "Tacos de Marlin",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.1
         },
         {
             "nombre": "Lentejas",
@@ -395,7 +395,7 @@
             "peso": 250,
             "valorNutricional": 0.8,
             "calorias": 43,
-            "preferencia": 0.85
+            "preferencia": 0.2
         },
         {
             "nombre": "Pimiento",
@@ -486,7 +486,7 @@
             "peso": 120,
             "valorNutricional": 0.8,
             "calorias": 53,
-            "preferencia": 0.85
+            "preferencia": 0.99
         },
         {
             "nombre": "Pomelo",
@@ -514,21 +514,21 @@
             "peso": 50,
             "valorNutricional": 0.9,
             "calorias": 74,
-            "preferencia": 0.9
+            "preferencia": 0.5
         },
         {
             "nombre": "Cebolla",
             "peso": 100,
             "valorNutricional": 0.8,
             "calorias": 40,
-            "preferencia": 0.75
+            "preferencia": 0.2
         },
         {
             "nombre": "Ajo",
             "peso": 10,
             "valorNutricional": 0.9,
             "calorias": 4,
-            "preferencia": 0.8
+            "preferencia": 0.4
         },
         {
             "nombre": "Pepperoni",
@@ -542,35 +542,35 @@
         "peso": 100,
         "valorNutricional": 0.85,
         "calorias": 76,
-        "preferencia": 0.8
+        "preferencia": 0.1
     },
     {
         "nombre": "Edamame",
         "peso": 100,
         "valorNutricional": 0.9,
         "calorias": 121,
-        "preferencia": 0.85
+        "preferencia": 0.2
     },
     {
         "nombre": "Tempeh",
         "peso": 100,
         "valorNutricional": 0.9,
         "calorias": 195,
-        "preferencia": 0.8
+        "preferencia": 0.1
     },
     {
         "nombre": "Seitan",
         "peso": 100,
         "valorNutricional": 0.8,
         "calorias": 370,
-        "preferencia": 0.75
+        "preferencia": 0.1
     },
     {
         "nombre": "Chía",
         "peso": 50,
         "valorNutricional": 0.9,
         "calorias": 486,
-        "preferencia": 0.85
+        "preferencia": 0.4
     },
     {
         "nombre": "Linaza",
@@ -598,49 +598,49 @@
         "peso": 10,
         "valorNutricional": 0.9,
         "calorias": 35,
-        "preferencia": 0.8
+        "preferencia": 0.3
     },
     {
         "nombre": "Alga Wakame",
         "peso": 10,
         "valorNutricional": 0.9,
         "calorias": 45,
-        "preferencia": 0.8
+        "preferencia": 0.1
     },
     {
         "nombre": "Kale",
         "peso": 100,
         "valorNutricional": 0.95,
         "calorias": 49,
-        "preferencia": 0.85
+        "preferencia": 0.1
     },
     {
         "nombre": "Col Rizada",
         "peso": 100,
         "valorNutricional": 0.9,
         "calorias": 50,
-        "preferencia": 0.8
+        "preferencia": 0.2
     },
     {
         "nombre": "Coles de Bruselas",
         "peso": 100,
         "valorNutricional": 0.9,
         "calorias": 43,
-        "preferencia": 0.8
+        "preferencia": 0.1
     },
     {
         "nombre": "Rábano",
         "peso": 50,
         "valorNutricional": 0.85,
         "calorias": 16,
-        "preferencia": 0.75
+        "preferencia": 0.5
     },
     {
         "nombre": "Nabo",
         "peso": 100,
         "valorNutricional": 0.85,
         "calorias": 28,
-        "preferencia": 0.75
+        "preferencia": 0.2
     },
     {
         "nombre": "Jícama",
@@ -654,28 +654,28 @@
         "peso": 100,
         "valorNutricional": 0.85,
         "calorias": 19,
-        "preferencia": 0.75
+        "preferencia": 0.6
     },
     {
         "nombre": "Okra",
         "peso": 100,
         "valorNutricional": 0.85,
         "calorias": 33,
-        "preferencia": 0.75
+        "preferencia": 0.3
     },
     {
         "nombre": "Rúcula",
         "peso": 50,
         "valorNutricional": 0.9,
         "calorias": 25,
-        "preferencia": 0.8
+        "preferencia": 0.2
     },
     {
         "nombre": "Berro",
         "peso": 50,
         "valorNutricional": 0.9,
         "calorias": 11,
-        "preferencia": 0.8
+        "preferencia": 0.5
     }
     ]
 }

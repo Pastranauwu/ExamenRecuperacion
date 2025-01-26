@@ -50,6 +50,7 @@ public class problemaMochila {
             }
         }
         
+        //Generar lista de alimentos
         for (int i = 0; i < array.size(); i++) {
             JSONObject jsonAlimentos = (JSONObject) array.get(i);
             
@@ -62,7 +63,7 @@ public class problemaMochila {
             Double preferencia = jsonAlimentos.get("preferencia") != null ? ((Number) jsonAlimentos.get("preferencia")).doubleValue() : 0.0;
         
             // Crear un nuevo objeto Alimento y agregarlo a la lista
-            System.out.println( i +") Nombre: " + nombre + " Peso: " + peso + " Valor Nutricional: " + valorNutricional + " Calorias: " + calorias + " Preferencia: " + preferencia);
+            // System.out.println( i +") Nombre: " + nombre + " Peso: " + peso + " Valor Nutricional: " + valorNutricional + " Calorias: " + calorias + " Preferencia: " + preferencia);
             alimentos.add(new Alimento(nombre, peso, valorNutricional, calorias, preferencia));
         }
 
@@ -97,7 +98,7 @@ public class problemaMochila {
         double precioTotal = 0.0;
         for (Alimento alimento : mejorGlobal.getSeleccion()) {
             System.out.println(alimento.getNombre() + " - Precio: " + alimento.getPeso() + " MXN " + " Calorías: "
-                    + alimento.getCalorias() + " kcal, Valor Nutricional: " + alimento.getValorNutricional());
+                    + alimento.getCalorias() + " kcal, Valor Nutricional: " + alimento.getValorNutricional() + ", Preferencia: " + alimento.getPreferencia());
             precioTotal += alimento.getPeso();
         }
         System.out.println("Precio total: " + precioTotal + " MXN, Calorías totales: "
