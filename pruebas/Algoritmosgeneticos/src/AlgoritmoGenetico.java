@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * La clase AlgoritmoGenetico implementa un algoritmo genético para optimizar
@@ -9,63 +8,39 @@ import java.util.Random;
  * separado.
  */
 public class AlgoritmoGenetico implements Runnable {
-    /**
-     * Lista de alimentos disponibles para la selección.
-     */
     private List<Alimento> alimentos;
-
-    /**
-     * El mejor individuo encontrado después de todas las generaciones.
-     */
     private Individuo mejorIndividuo;
-
-    /**
-     * Número de generaciones a ejecutar.
-     */
     private static final int GENERACIONES = 1000;
+    private static final int TAMANO_POBLACION = 550;
 
-    /**
-     * Tamaño de la población inicial.
-     */
-    private static final int TAMANO_POBLACION = 300;
+    // Para monitoreo
+    private List<Double> mejoresFitnessPorGeneracion = new ArrayList<>();
+    private List<Double> promedioFitnessPorGeneracion = new ArrayList<>();
+    private List<Double> diversidadPorGeneracion = new ArrayList<>();
 
-    /**
-     * Constructor que inicializa la lista de alimentos.
-     *
-     * @param alimentos Lista de alimentos disponibles.
-     */
     public AlgoritmoGenetico(List<Alimento> alimentos) {
         this.alimentos = alimentos;
     }
 
-    /**
-     * Método que ejecuta el algoritmo genético.
-     * Genera la población inicial y la evoluciona a través de varias generaciones.
-     */
     @Override
     public void run() {
         List<Individuo> poblacion = generarPoblacionInicial();
         double mejorFitness = 0;
         Individuo mejorIndividuoAux;
 
-        for (int i = 0; i < GENERACIONES; i++) {
+        for (int generacion = 0; generacion < GENERACIONES; generacion++) {
             poblacion = evolucionar(poblacion);
-
             mejorIndividuoAux = obtenerMejorIndividuo(poblacion);
             if (mejorIndividuoAux.getFitness() > mejorFitness) {
                 mejorFitness = mejorIndividuoAux.getFitness();
                 mejorIndividuo = mejorIndividuoAux;
             }
-            // System.out.println("Generación " + i + ": Mejor fitness = " + obtenerMejorIndividuo(poblacion).getFitness());
+
+            // // Monitoreo de progreso
+            // registrarEstadisticas(poblacion, generacion);
         }
-        // mejorIndividuo = obtenerMejorIndividuo(poblacion);
     }
 
-    /**
-     * Genera la población inicial de individuos.
-     *
-     * @return Lista de individuos que conforman la población inicial.
-     */
     private List<Individuo> generarPoblacionInicial() {
         List<Individuo> poblacion = new ArrayList<>();
         Random random = new Random();
@@ -77,142 +52,104 @@ public class AlgoritmoGenetico implements Runnable {
                 }
             }
             poblacion.add(new Individuo(seleccion));
-
         }
         return poblacion;
     }
 
-    /**
-     * Evoluciona la población a través de cruces, mutaciones y selección.
-     *
-     * @param poblacion La población actual.
-     * @return La nueva generación de la población.
-     */
     private List<Individuo> evolucionar(List<Individuo> poblacion) {
-        // Implementar cruces, mutaciones y selección aquí.
         Random random = new Random();
-        // poblacion = mutarPoblacion(poblacion);
-
         if (random.nextInt(4) == 0) {
             poblacion = mutarPoblacion(poblacion);
         } else {
             poblacion = cruzarPoblacion(poblacion);
         }
-
-        return poblacion; // Devuelve la nueva generación.
+        return poblacion;
     }
 
-    /**
-     * Cruza la población actual para generar una nueva generación.
-     *
-     * @param poblacion La población actual.
-     * @return La nueva generación de la población.
-     */
     private List<Individuo> cruzarPoblacion(List<Individuo> poblacion) {
         List<Individuo> nuevaGeneracion = new ArrayList<>();
         Random random = new Random();
 
-        // Generar hijos a partir de cruces
         while (nuevaGeneracion.size() < poblacion.size()) {
-            // ver quienes son los 2 individuos con mejor fitness y hacer que sean los
-            // padres
             Individuo padre1 = obtenerMejorIndividuo(poblacion);
             Individuo padre2 = poblacion.get(random.nextInt(poblacion.size()));
 
-            // verificar que genes tienen en comun
-            List<Alimento> genesComunes = new ArrayList<>();
-            for (Alimento alimento : padre1.getSeleccion()) {
-                if (padre2.getSeleccion().contains(alimento)) {
-                    genesComunes.add(alimento);
-                }
-            }
+            List<Alimento> genesComunes = padre1.getSeleccion().stream()
+                .filter(padre2.getSeleccion()::contains)
+                .collect(Collectors.toList());
 
-            if (random.nextDouble() < 0.5) { // 50% de probabilidad de mutación
-                if (!genesComunes.isEmpty() && random.nextBoolean()) {
-                    // Eliminar un gen (alimento) aleatorio
+            int cambios = random.nextInt(3) + 1; // Realizar entre 1 y 3 cambios
+            for (int i = 0; i < cambios; i++) {
+                if (random.nextDouble() < 0.5 && !genesComunes.isEmpty()) {
                     genesComunes.remove(random.nextInt(genesComunes.size()));
                 } else {
-                    // Agregar un nuevo gen (alimento) aleatorio
                     Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
                     if (!genesComunes.contains(nuevoAlimento)) {
                         genesComunes.add(nuevoAlimento);
                     }
                 }
-            } else {
-                // Intercambiar dos genes aleatorios
-                if (genesComunes.size() > 1) {
-                    int index1 = random.nextInt(genesComunes.size());
-                    int index2 = random.nextInt(genesComunes.size());
-                    Alimento temp = genesComunes.get(index1);
-                    genesComunes.set(index1, genesComunes.get(index2));
-                    genesComunes.set(index2, temp);
-                }
             }
 
             nuevaGeneracion.add(new Individuo(genesComunes));
-
         }
         return nuevaGeneracion;
     }
 
-    public List<Individuo> mutarPoblacion(List<Individuo> poblacion) {
+    private List<Individuo> mutarPoblacion(List<Individuo> poblacion) {
         Random random = new Random();
-
         for (Individuo individuo : poblacion) {
-            if (individuo.getFitness() == 0) {
-                    List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
-
-                    if (!genes.isEmpty() && random.nextBoolean()) {
-                        // Eliminar un gen (alimento) aleatorio
-                        genes.remove(random.nextInt(genes.size()));
-                    } else {
-                        // Agregar un nuevo gen (alimento) aleatorio
-                        Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
-                        if (!genes.contains(nuevoAlimento)) {
+            if (random.nextDouble() < 0.15) {
+                List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
+                if (!genes.isEmpty() && random.nextBoolean()) {
+                    genes.remove(random.nextInt(genes.size()));
+                } else {
+                    Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
+                    if (!genes.contains(nuevoAlimento)) {
                             genes.add(nuevoAlimento);
-                        }
                     }
-                    // Actualizar el individuo con los nuevos genes
-                    individuo.setSeleccion(genes);
-            } else {
-                if (random.nextDouble() < 0.80) { // 15% de probabilidad de mutación
-                    List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
-
-                    if (!genes.isEmpty() && random.nextBoolean()) {
-                        // Eliminar un gen (alimento) aleatorio
-                        genes.remove(random.nextInt(genes.size()));
-                    } else {
-                        // Agregar un nuevo gen (alimento) aleatorio
-                        Alimento nuevoAlimento = alimentos.get(random.nextInt(alimentos.size()));
-                        if (!genes.contains(nuevoAlimento)) {
-                            genes.add(nuevoAlimento);
-                        }
-                    }
-
-                    // Actualizar el individuo con los nuevos genes
-                    individuo.setSeleccion(genes);
                 }
+                individuo.setSeleccion(genes);
             }
         }
-
         return poblacion;
     }
 
-    /**
-     * Obtiene el mejor individuo de la población actual basado en su fitness.
-     *
-     * @param poblacion La población actual.
-     * @return El mejor individuo de la población.
-     */
     private Individuo obtenerMejorIndividuo(List<Individuo> poblacion) {
-        return poblacion.stream().max((i1, i2) -> Double.compare(i1.getFitness(), i2.getFitness())).orElse(null);
+        return poblacion.stream().max(Comparator.comparingDouble(Individuo::getFitness)).orElse(null);
     }
 
-    /**
-     * Devuelve el mejor individuo encontrado después de todas las generaciones.
-     *
-     * @return El mejor individuo.
-     */
+    private void registrarEstadisticas(List<Individuo> poblacion, int generacion) {
+        double mejorFitness = poblacion.stream().mapToDouble(Individuo::getFitness).max().orElse(0);
+        double promedioFitness = poblacion.stream().mapToDouble(Individuo::getFitness).average().orElse(0);
+        double diversidad = calcularDiversidad(poblacion);
+
+        mejoresFitnessPorGeneracion.add(mejorFitness);
+        promedioFitnessPorGeneracion.add(promedioFitness);
+        diversidadPorGeneracion.add(diversidad);
+
+        System.out.printf("Generación %d: Mejor Fitness: %.2f, Promedio Fitness: %.2f, Diversidad: %.2f%n",
+            generacion, mejorFitness, promedioFitness, diversidad);
+    }
+
+    private double calcularDiversidad(List<Individuo> poblacion) {
+        Set<List<Alimento>> combinacionesUnicas = poblacion.stream()
+            .map(Individuo::getSeleccion)
+            .collect(Collectors.toSet());
+        return (double) combinacionesUnicas.size() / poblacion.size();
+    }
+
+    public List<Double> getMejoresFitnessPorGeneracion() {
+        return mejoresFitnessPorGeneracion;
+    }
+
+    public List<Double> getPromedioFitnessPorGeneracion() {
+        return promedioFitnessPorGeneracion;
+    }
+
+    public List<Double> getDiversidadPorGeneracion() {
+        return diversidadPorGeneracion;
+    }
+
     public Individuo getMejorIndividuo() {
         return mejorIndividuo;
     }

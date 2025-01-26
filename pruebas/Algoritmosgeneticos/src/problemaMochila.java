@@ -39,7 +39,6 @@ public class problemaMochila {
                 new Alimento("Espinaca", 12, 0.92, 23, 0.7), // Muy saludable, bajo en calorías
                 new Alimento("Nueces", 120, 0.9, 607, 0.9), // Altas en grasas saludables y calorías
                 new Alimento("Avena", 35, 0.85, 389, 0.8), // Excelente para energía
-                new Alimento("Chocolate", 60, 0.7, 546, 0.95), // Alta preferencia, alto en calorías
                 new Alimento("Cereal", 45, 0.7, 379, 0.8), // Energético
                 new Alimento("Jamón", 90, 0.85, 145, 0.85), // Proteínas moderadas
                 new Alimento("Atún", 35, 0.95, 116, 0.9), // Rico en proteínas, bajo en calorías
