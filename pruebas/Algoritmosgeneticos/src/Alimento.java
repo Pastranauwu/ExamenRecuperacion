@@ -27,6 +27,8 @@ public class Alimento {
      */
     private double preferencia;
 
+    private double gramos;
+
     /**
      * Constructor para crear una instancia de Alimento.
      *
@@ -42,6 +44,14 @@ public class Alimento {
         this.valorNutricional = valorNutricional;
         this.calorias = calorias;
         this.preferencia = preferencia;
+    }
+    public Alimento(String nombre, double peso, double valorNutricional, double calorias, double preferencia, double gramos) {
+        this.nombre = nombre;
+        this.peso = peso;
+        this.valorNutricional = valorNutricional;
+        this.calorias = calorias;
+        this.preferencia = preferencia;
+        this.gramos = gramos;
     }
 
     /**
@@ -87,5 +97,8 @@ public class Alimento {
      */
     public double getPreferencia() {
         return preferencia;
+    }
+    public double getGramos() {
+        return gramos;
     }
 }

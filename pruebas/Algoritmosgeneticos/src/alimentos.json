@@ -5,677 +5,774 @@
             "peso": 15,
             "valorNutricional": 0.8,
             "calorias": 52,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Plátano",
             "peso": 18,
             "valorNutricional": 0.7,
             "calorias": 89,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Zanahoria",
             "peso": 10,
             "valorNutricional": 0.95,
             "calorias": 41,
-            "preferencia": 0.75
+            "preferencia": 0.75,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Espinaca",
             "peso": 12,
             "valorNutricional": 0.92,
             "calorias": 23,
-            "preferencia": 0.7
+            "preferencia": 0.7,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Fresas",
             "peso": 60,
             "valorNutricional": 0.9,
             "calorias": 32,
-            "preferencia": 0.92
+            "preferencia": 0.92,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pollo",
             "peso": 80,
             "valorNutricional": 0.85,
             "calorias": 165,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pescado",
             "peso": 150,
             "valorNutricional": 0.95,
             "calorias": 206,
-            "preferencia": 0.95
+            "preferencia": 0.95,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Huevos",
             "peso": 40,
             "valorNutricional": 0.85,
             "calorias": 155,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Yogurt",
             "peso": 25,
             "valorNutricional": 0.8,
             "calorias": 59,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Leche",
             "peso": 22,
             "valorNutricional": 0.8,
             "calorias": 42,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Brócoli",
             "peso": 25,
             "valorNutricional": 0.8,
             "calorias": 35,
-            "preferencia": 0.78
+            "preferencia": 0.78,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Nueces",
             "peso": 120,
             "valorNutricional": 0.9,
             "calorias": 607,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Avena",
             "peso": 35,
             "valorNutricional": 0.85,
             "calorias": 389,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Arándanos",
             "peso": 50,
             "valorNutricional": 0.9,
             "calorias": 57,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pepino",
             "peso": 8,
             "valorNutricional": 0.85,
             "calorias": 15,
-            "preferencia": 0.7
+            "preferencia": 0.7,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tomate",
             "peso": 10,
             "valorNutricional": 0.8,
             "calorias": 18,
-            "preferencia": 0.7
+            "preferencia": 0.7,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Almendras",
             "peso": 100,
             "valorNutricional": 0.9,
             "calorias": 575,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Quinoa",
             "peso": 120,
             "valorNutricional": 0.87,
             "calorias": 368,
-            "preferencia": 0.88
+            "preferencia": 0.88,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pizza",
             "peso": 150,
-            "valorNutricional": 0.3,
+            "valorNutricional": 0.2,
             "calorias": 266,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Hamburguesa",
             "peso": 180,
             "valorNutricional": 0.5,
             "calorias": 295,
-            "preferencia": 0.88
+            "preferencia": 0.88,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Refresco",
             "peso": 18,
             "valorNutricional": 0.01,
             "calorias": 160,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Papas",
             "peso": 50,
             "valorNutricional": 0.2,
             "calorias": 93,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Galletas",
             "peso": 30,
             "valorNutricional": 0.3,
             "calorias": 160,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Helado",
             "peso": 100,
             "valorNutricional": 0.2,
             "calorias": 207,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Chocolate",
             "peso": 30,
             "valorNutricional": 0.3,
             "calorias": 160,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Donas",
             "peso": 50,
             "valorNutricional": 0.3,
             "calorias": 250,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pasta",
             "peso": 100,
             "valorNutricional": 0.4,
             "calorias": 131,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Arroz",
             "peso": 100,
             "valorNutricional": 0.4,
             "calorias": 130,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pan",
             "peso": 50,
             "valorNutricional": 0.4,
             "calorias": 130,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 226,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Sushi",
             "peso": 100,
             "valorNutricional": 0.6,
             "calorias": 132,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Hot Dog",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 290,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tortas",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 250,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tamales",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Chiles Rellenos",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Enchiladas",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pozole",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Canasta",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Bistec",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Pastor",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Carnitas",
             "peso": 100,
-            "valorNutricional": 0.5
+            "valorNutricional": 0.5,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Suadero",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Barbacoa",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Guisado",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Birria",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Pescado",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.2
+            "preferencia": 0.2,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Camarón",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.1
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Tacos de Marlin",
             "peso": 100,
             "valorNutricional": 0.5,
             "calorias": 200,
-            "preferencia": 0.1
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Lentejas",
             "peso": 30,
             "valorNutricional": 0.9,
             "calorias": 116,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Calabaza",
             "peso": 15,
             "valorNutricional": 0.8,
             "calorias": 26,
-            "preferencia": 0.7
+            "preferencia": 0.7,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Sandía",
             "peso": 12,
             "valorNutricional": 0.75,
             "calorias": 30,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Kiwi",
             "peso": 20,
             "valorNutricional": 0.85,
             "calorias": 61,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Aguacate",
             "peso": 120,
             "valorNutricional": 0.9,
             "calorias": 160,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Coco",
             "peso": 150,
             "valorNutricional": 0.8,
             "calorias": 354,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Espárragos",
             "peso": 25,
             "valorNutricional": 0.9,
             "calorias": 20,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Mango",
             "peso": 200,
             "valorNutricional": 0.85,
             "calorias": 60,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Papaya",
             "peso": 250,
             "valorNutricional": 0.8,
             "calorias": 43,
-            "preferencia": 0.2
+            "preferencia": 0.2,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pimiento",
             "peso": 50,
             "valorNutricional": 0.9,
             "calorias": 20,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Calabacín",
             "peso": 200,
             "valorNutricional": 0.85,
             "calorias": 17,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Berenjena",
             "peso": 250,
             "valorNutricional": 0.8,
             "calorias": 25,
-            "preferencia": 0.75
+            "preferencia": 0.75,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Coliflor",
             "peso": 300,
             "valorNutricional": 0.9,
             "calorias": 25,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Remolacha",
             "peso": 150,
             "valorNutricional": 0.85,
             "calorias": 43,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Cereza",
             "peso": 5,
             "valorNutricional": 0.85,
             "calorias": 50,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pera",
             "peso": 180,
             "valorNutricional": 0.8,
             "calorias": 57,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Melón",
             "peso": 250,
             "valorNutricional": 0.75,
             "calorias": 34,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Uvas",
             "peso": 100,
             "valorNutricional": 0.8,
             "calorias": 69,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Piña",
             "peso": 150,
             "valorNutricional": 0.85,
             "calorias": 50,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Moras",
             "peso": 50,
             "valorNutricional": 0.9,
             "calorias": 43,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Ciruela",
             "peso": 70,
             "valorNutricional": 0.85,
             "calorias": 46,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Mandarina",
             "peso": 120,
             "valorNutricional": 0.8,
             "calorias": 53,
-            "preferencia": 0.99
+            "preferencia": 0.99,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pomelo",
             "peso": 230,
             "valorNutricional": 0.85,
             "calorias": 42,
-            "preferencia": 0.8
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Granada",
             "peso": 200,
             "valorNutricional": 0.9,
             "calorias": 83,
-            "preferencia": 0.9
+            "preferencia": 0.9,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Durazno",
             "peso": 150,
             "valorNutricional": 0.85,
             "calorias": 39,
-            "preferencia": 0.85
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Higos",
             "peso": 50,
             "valorNutricional": 0.9,
             "calorias": 74,
-            "preferencia": 0.5
+            "preferencia": 0.5,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Cebolla",
             "peso": 100,
             "valorNutricional": 0.8,
             "calorias": 40,
-            "preferencia": 0.2
+            "preferencia": 0.2,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Ajo",
             "peso": 10,
             "valorNutricional": 0.9,
             "calorias": 4,
-            "preferencia": 0.4
+            "preferencia": 0.4,
+            "cantidadEnGramos": 100
         },
         {
             "nombre": "Pepperoni",
             "peso": 50,
             "valorNutricional": 0.6,
             "calorias": 494,
-            "preferencia": 0.85
-        }, 
-    {
-        "nombre": "Tofu",
-        "peso": 100,
-        "valorNutricional": 0.85,
-        "calorias": 76,
-        "preferencia": 0.1
-    },
-    {
-        "nombre": "Edamame",
-        "peso": 100,
-        "valorNutricional": 0.9,
-        "calorias": 121,
-        "preferencia": 0.2
-    },
-    {
-        "nombre": "Tempeh",
-        "peso": 100,
-        "valorNutricional": 0.9,
-        "calorias": 195,
-        "preferencia": 0.1
-    },
-    {
-        "nombre": "Seitan",
-        "peso": 100,
-        "valorNutricional": 0.8,
-        "calorias": 370,
-        "preferencia": 0.1
-    },
-    {
-        "nombre": "Chía",
-        "peso": 50,
-        "valorNutricional": 0.9,
-        "calorias": 486,
-        "preferencia": 0.4
-    },
-    {
-        "nombre": "Linaza",
-        "peso": 50,
-        "valorNutricional": 0.9,
-        "calorias": 534,
-        "preferencia": 0.85
-    },
-    {
-        "nombre": "Semillas de Girasol",
-        "peso": 50,
-        "valorNutricional": 0.85,
-        "calorias": 584,
-        "preferencia": 0.8
-    },
-    {
-        "nombre": "Semillas de Calabaza",
-        "peso": 50,
-        "valorNutricional": 0.85,
-        "calorias": 559,
-        "preferencia": 0.8
-    },
-    {
-        "nombre": "Alga Nori",
-        "peso": 10,
-        "valorNutricional": 0.9,
-        "calorias": 35,
-        "preferencia": 0.3
-    },
-    {
-        "nombre": "Alga Wakame",
-        "peso": 10,
-        "valorNutricional": 0.9,
-        "calorias": 45,
-        "preferencia": 0.1
-    },
-    {
-        "nombre": "Kale",
-        "peso": 100,
-        "valorNutricional": 0.95,
-        "calorias": 49,
-        "preferencia": 0.1
-    },
-    {
-        "nombre": "Col Rizada",
-        "peso": 100,
-        "valorNutricional": 0.9,
-        "calorias": 50,
-        "preferencia": 0.2
-    },
-    {
-        "nombre": "Coles de Bruselas",
-        "peso": 100,
-        "valorNutricional": 0.9,
-        "calorias": 43,
-        "preferencia": 0.1
-    },
-    {
-        "nombre": "Rábano",
-        "peso": 50,
-        "valorNutricional": 0.85,
-        "calorias": 16,
-        "preferencia": 0.5
-    },
-    {
-        "nombre": "Nabo",
-        "peso": 100,
-        "valorNutricional": 0.85,
-        "calorias": 28,
-        "preferencia": 0.2
-    },
-    {
-        "nombre": "Jícama",
-        "peso": 100,
-        "valorNutricional": 0.85,
-        "calorias": 38,
-        "preferencia": 0.8
-    },
-    {
-        "nombre": "Chayote",
-        "peso": 100,
-        "valorNutricional": 0.85,
-        "calorias": 19,
-        "preferencia": 0.6
-    },
-    {
-        "nombre": "Okra",
-        "peso": 100,
-        "valorNutricional": 0.85,
-        "calorias": 33,
-        "preferencia": 0.3
-    },
-    {
-        "nombre": "Rúcula",
-        "peso": 50,
-        "valorNutricional": 0.9,
-        "calorias": 25,
-        "preferencia": 0.2
-    },
-    {
-        "nombre": "Berro",
-        "peso": 50,
-        "valorNutricional": 0.9,
-        "calorias": 11,
-        "preferencia": 0.5
-    }
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Tofu",
+            "peso": 100,
+            "valorNutricional": 0.85,
+            "calorias": 76,
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Edamame",
+            "peso": 100,
+            "valorNutricional": 0.9,
+            "calorias": 121,
+            "preferencia": 0.2,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Tempeh",
+            "peso": 100,
+            "valorNutricional": 0.9,
+            "calorias": 195,
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Seitan",
+            "peso": 100,
+            "valorNutricional": 0.8,
+            "calorias": 370,
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Chía",
+            "peso": 50,
+            "valorNutricional": 0.9,
+            "calorias": 486,
+            "preferencia": 0.4,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Linaza",
+            "peso": 50,
+            "valorNutricional": 0.9,
+            "calorias": 534,
+            "preferencia": 0.85,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Semillas de Girasol",
+            "peso": 50,
+            "valorNutricional": 0.85,
+            "calorias": 584,
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Semillas de Calabaza",
+            "peso": 50,
+            "valorNutricional": 0.85,
+            "calorias": 559,
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Alga Nori",
+            "peso": 10,
+            "valorNutricional": 0.9,
+            "calorias": 35,
+            "preferencia": 0.3,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Alga Wakame",
+            "peso": 10,
+            "valorNutricional": 0.9,
+            "calorias": 45,
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Kale",
+            "peso": 100,
+            "valorNutricional": 0.95,
+            "calorias": 49,
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Col Rizada",
+            "peso": 100,
+            "valorNutricional": 0.9,
+            "calorias": 50,
+            "preferencia": 0.2,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Coles de Bruselas",
+            "peso": 100,
+            "valorNutricional": 0.9,
+            "calorias": 43,
+            "preferencia": 0.1,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Rábano",
+            "peso": 50,
+            "valorNutricional": 0.85,
+            "calorias": 16,
+            "preferencia": 0.5,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Nabo",
+            "peso": 100,
+            "valorNutricional": 0.85,
+            "calorias": 28,
+            "preferencia": 0.2,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Jícama",
+            "peso": 100,
+            "valorNutricional": 0.85,
+            "calorias": 38,
+            "preferencia": 0.8,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Chayote",
+            "peso": 100,
+            "valorNutricional": 0.85,
+            "calorias": 19,
+            "preferencia": 0.6,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Okra",
+            "peso": 100,
+            "valorNutricional": 0.85,
+            "calorias": 33,
+            "preferencia": 0.3,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Rúcula",
+            "peso": 50,
+            "valorNutricional": 0.9,
+            "calorias": 25,
+            "preferencia": 0.2,
+            "cantidadEnGramos": 100
+        },
+        {
+            "nombre": "Berro",
+            "peso": 50,
+            "valorNutricional": 0.9,
+            "calorias": 11,
+            "preferencia": 0.5,
+            "cantidadEnGramos": 100
+        }
     ]
 }

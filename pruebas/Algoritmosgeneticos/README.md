@@ -52,10 +52,11 @@ javac src/problemaMochila.java
 java bin/Main
 ```
 
+Es necesario importar la libreria para poder leer el formato JSON json-simple-1.1.1.jar
+
 Este enfoque permite personalizar la dieta según las necesidades y restricciones individuales, proporcionando una herramienta poderosa para la planificación de dietas saludables y económicas.
 
 ## Conclusión
 
 Este proyecto demuestra cómo los algoritmos genéticos pueden ser aplicados para resolver problemas complejos como el problema de la mochila. La implementación en Java proporciona una base sólida para experimentar con diferentes configuraciones y mejorar el rendimiento del algoritmo.
-
 

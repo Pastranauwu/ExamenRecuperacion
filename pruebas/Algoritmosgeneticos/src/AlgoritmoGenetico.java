@@ -13,7 +13,10 @@ public class AlgoritmoGenetico implements Runnable {
     private List<Alimento> alimentos;
     private Individuo mejorIndividuo;
     private static final int GENERACIONES = 1200; 
-    private static final int TAMANO_POBLACION = 600;
+    private static final int TAMANO_POBLACION = 700;
+    private static  int probabilidadMutacion = 70;
+    // private static  int probabilidadCruce = 50;
+    private static double variedaPorGeneracion = 0;
 
     // Para monitoreo
     private List<Double> mejoresFitnessPorGeneracion = new ArrayList<>();
@@ -40,7 +43,21 @@ public class AlgoritmoGenetico implements Runnable {
             // Monitoreo de progreso
             if (generacion % 100 == 0) {
                 registrarEstadisticas(poblacion, generacion);
-                System.out.println("Generación: " + generacion + " diversidad " + calcularDiversidad(poblacion) );
+                diversidadPorGeneracion.add(calcularDiversidad(poblacion));
+
+                if (diversidadPorGeneracion.size()!=0) {
+                    //promedio de la lista de diversidad
+                    double aux = diversidadPorGeneracion.stream().mapToDouble(Double::doubleValue).average().orElse(0);
+                    if (aux == variedaPorGeneracion) {
+                        variedaPorGeneracion = aux;
+                        probabilidadMutacion += 10;
+                    }else{
+                        variedaPorGeneracion = aux;
+                        probabilidadMutacion -= 10;
+                    }
+                    // System.out.println("Variación: " + variedaPorGeneracion);
+                }
+                // System.out.println("Generación: " + generacion + " diversidad " + calcularDiversidad(poblacion) );
             }
         }
     }
@@ -102,7 +119,7 @@ public class AlgoritmoGenetico implements Runnable {
     private List<Individuo> mutarPoblacion(List<Individuo> poblacion) {
         Random random = new Random();
         for (Individuo individuo : poblacion) {
-            if (random.nextDouble() < 0.7) {
+            if (random.nextDouble() < probabilidadMutacion/100) {
                 List<Alimento> genes = new ArrayList<>(individuo.getSeleccion());
                 if (!genes.isEmpty() && random.nextBoolean()) {
                     genes.remove(random.nextInt(genes.size()));
@@ -124,9 +141,8 @@ public class AlgoritmoGenetico implements Runnable {
 
     private void registrarEstadisticas(List<Individuo> poblacion, int generacion) {
         double promedioFitness = poblacion.stream().mapToDouble(Individuo::getFitness).average().orElse(0);
-
         promedioFitnessPorGeneracion.add(promedioFitness);
-
+        
         try (FileWriter writer = new FileWriter("estadisticas.txt", true)) {
             writer.write(String.format("Generación %d: Promedio Fitness: %.2f - Hilo: %s%n", generacion, promedioFitness, Thread.currentThread().getName()));
         } catch (IOException e) {

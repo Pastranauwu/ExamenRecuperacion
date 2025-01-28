@@ -32,7 +32,7 @@ public class problemaMochila {
     public static void main(String[] args) throws Exception {
         List<Alimento> alimentos = new ArrayList<>();
         JSONParser parser = new JSONParser();
-        FileReader reader = new FileReader("src/alimentos.json");
+        FileReader reader = new FileReader("src/alimentos_modificados.json");
         Object obj = parser.parse(reader);
         JSONObject pJsonObj = (JSONObject)obj;
         JSONArray array = (JSONArray)pJsonObj.get("alimentos");
@@ -61,10 +61,11 @@ public class problemaMochila {
             Double valorNutricional = jsonAlimentos.get("valorNutricional") != null ? ((Number) jsonAlimentos.get("valorNutricional")).doubleValue() : 0.0;
             Double calorias = jsonAlimentos.get("calorias") != null ? ((Number) jsonAlimentos.get("calorias")).doubleValue() : 0.0;
             Double preferencia = jsonAlimentos.get("preferencia") != null ? ((Number) jsonAlimentos.get("preferencia")).doubleValue() : 0.0;
+            Double gramos = jsonAlimentos.get("cantidadEnGramos") != null ? ((Number) jsonAlimentos.get("cantidadEnGramos")).doubleValue() : 0.0;
         
             // Crear un nuevo objeto Alimento y agregarlo a la lista
             // System.out.println( i +") Nombre: " + nombre + " Peso: " + peso + " Valor Nutricional: " + valorNutricional + " Calorias: " + calorias + " Preferencia: " + preferencia);
-            alimentos.add(new Alimento(nombre, peso, valorNutricional, calorias, preferencia));
+            alimentos.add(new Alimento(nombre, peso, valorNutricional, calorias, preferencia, gramos));
         }
 
         int numHilos = 8;
@@ -96,7 +97,7 @@ public class problemaMochila {
         double precioTotal = 0.0;
         for (Alimento alimento : mejorGlobal.getSeleccion()) {
             System.out.println(alimento.getNombre() + " - Precio: " + alimento.getPeso() + " MXN " + " Calorías: "
-                    + alimento.getCalorias() + " kcal, Valor Nutricional: " + alimento.getValorNutricional() + ", Preferencia: " + alimento.getPreferencia());
+                    + alimento.getCalorias() + " kcal, Valor Nutricional: " + alimento.getValorNutricional() + ", Preferencia: " + alimento.getPreferencia() + " gramos: " + alimento.getGramos());
             precioTotal += alimento.getPeso();
         }
         System.out.println("Precio total: " + precioTotal + " MXN, Calorías totales: "
