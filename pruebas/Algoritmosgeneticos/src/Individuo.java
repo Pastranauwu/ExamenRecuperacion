@@ -18,7 +18,7 @@ public class Individuo {
 
     // Penalización por calorías excedidas.
     // 0.9: calorías medianamente importantes, 0.2: poco importantes, 1.5: muy importantes.
-    private static double penalizacionCalorias = 0.2;
+    private static double penalizacionCalorias = 0.9;
 
     // Peso máximo permitido para la selección de alimentos.
     private static final double MAX_PESO = 1200;

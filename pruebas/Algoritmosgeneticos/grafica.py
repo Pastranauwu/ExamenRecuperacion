@@ -24,11 +24,12 @@ for match in matches:
 # Configuración de la gráfica
 fig, axes = plt.subplots(nrows=4,ncols=2, figsize=(16, 12), constrained_layout=True)
 axes = axes.flatten()  # Aplanar los ejes para iterar más fácilmente
-
+i = 1
 # Graficar cada hilo
 for ax, (hilo, data) in zip(axes, hilos_data.items()):
     ax.plot(data['generations'], data['fitness'], label=f'Hilo: {hilo}', marker='o', linestyle='-')
-    ax.set_title(f'Desempeño del {hilo}', fontsize=12)
+    ax.set_title(f'Desempeño de la poblacion {i}', fontsize=12) 
+    i += 1
     ax.set_xlabel('Generación', fontsize=10)
     ax.set_ylabel('Promedio Fitness', fontsize=10)
     ax.grid(True, linestyle='--', linewidth=0.5)

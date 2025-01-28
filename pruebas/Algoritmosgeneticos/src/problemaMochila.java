@@ -64,7 +64,7 @@ public class problemaMochila {
             Double gramos = jsonAlimentos.get("cantidadEnGramos") != null ? ((Number) jsonAlimentos.get("cantidadEnGramos")).doubleValue() : 0.0;
         
             // Crear un nuevo objeto Alimento y agregarlo a la lista
-            // System.out.println( i +") Nombre: " + nombre + " Peso: " + peso + " Valor Nutricional: " + valorNutricional + " Calorias: " + calorias + " Preferencia: " + preferencia);
+            // System.out.println( i +") Nombre: " + nombre + " Peso: " + peso + " Valor Nutricional: " + valorNutricional + " Calorias: " + calorias);
             alimentos.add(new Alimento(nombre, peso, valorNutricional, calorias, preferencia, gramos));
         }
 
