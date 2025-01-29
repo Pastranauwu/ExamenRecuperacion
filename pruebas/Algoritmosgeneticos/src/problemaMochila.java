@@ -31,7 +31,39 @@ import org.json.simple.parser.JSONParser;
  * precio total.
  * 
  */
+/**
+ * La clase problemaMochila representa un programa que lee una lista de alimentos desde un archivo JSON,
+ * verifica si hay alimentos con nombres repetidos, y luego ejecuta un algoritmo genético en paralelo
+ * para encontrar la mejor combinación de alimentos basada en ciertos criterios.
+ * 
+ * <p>El programa realiza las siguientes tareas:</p>
+ * <ul>
+ *   <li>Lee un archivo JSON que contiene una lista de alimentos.</li>
+ *   <li>Verifica si hay alimentos con nombres repetidos y muestra un mensaje de error si los encuentra.</li>
+ *   <li>Genera una lista de objetos Alimento a partir de los datos del archivo JSON.</li>
+ *   <li>Ejecuta un algoritmo genético en paralelo utilizando un pool de hilos.</li>
+ *   <li>Encuentra la mejor solución generada por los hilos del algoritmo genético.</li>
+ *   <li>Muestra la mejor solución encontrada y los alimentos seleccionados.</li>
+ *   <li>Escribe los nombres de los alimentos seleccionados en un archivo JSON.</li>
+ * </ul>
+ * 
+ * @throws Exception si ocurre un error durante la lectura del archivo JSON o la ejecución del algoritmo genético.
+ */
 public class problemaMochila {
+    /**
+     * Método principal que ejecuta el algoritmo genético para seleccionar alimentos.
+     *
+     * @param args Argumentos de la línea de comandos.
+     * @throws Exception Si ocurre algún error durante la ejecución.
+     *
+     * El método realiza las siguientes operaciones:
+     * 1. Lee un archivo JSON que contiene una lista de alimentos.
+     * 2. Verifica que no haya alimentos con nombres repetidos.
+     * 3. Genera una lista de objetos Alimento a partir de los datos del archivo JSON.
+     * 4. Crea y ejecuta múltiples hilos del algoritmo genético para encontrar la mejor combinación de alimentos.
+     * 5. Imprime la mejor solución encontrada y los alimentos seleccionados.
+     * 6. Escribe los nombres de los alimentos seleccionados en un archivo JSON.
+     */
     public static void main(String[] args) throws Exception {
         List<Alimento> alimentos = new ArrayList<>();
         JSONParser parser = new JSONParser();

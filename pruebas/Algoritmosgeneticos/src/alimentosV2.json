@@ -147,7 +147,7 @@
         {
             "nombre": "Cereza",
             "calorias": 50,
-            "valorNutricional": 0.85,
+            "valorNutricional": 0.3,
             "preferencia": 0.9,
             "cantidadEnGramos": 100,
             "proteinas": 1,

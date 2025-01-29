@@ -31,7 +31,7 @@ public class Alimento {
 
     private double carbohidratos;
 
-    private double azuares;
+    private double azucares;
 
     private double sodio;
 
@@ -54,7 +54,7 @@ public class Alimento {
         this.preferencia = preferencia;
     }
 
-    public Alimento(String nombre, double cantidadEnGramos, double valorNutricional, double calorias, double preferencia, double proteina, double carbohidratos, double azuares, double sodio, double grasas) {
+    public Alimento(String nombre, double cantidadEnGramos, double valorNutricional, double calorias, double preferencia, double proteina, double carbohidratos, double azucares, double sodio, double grasas) {
         this.nombre = nombre;
         this.cantidadEnGramos = cantidadEnGramos;
         this.valorNutricional = valorNutricional;
@@ -62,7 +62,7 @@ public class Alimento {
         this.preferencia = preferencia;
         this.proteina = proteina;
         this.carbohidratos = carbohidratos;
-        this.azuares = azuares;
+        this.azucares = azucares;
         this.sodio = sodio;
         this.grasas = grasas;
     }
@@ -79,7 +79,13 @@ public class Alimento {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public double getAzucares() {
 
+        // Return the amount of sugars in the food item
+
+        return azucares;
+
+    }
     /**
      * Obtiene el valor nutricional del alimento.
      *
@@ -145,11 +151,11 @@ public class Alimento {
 
 
     public void setAzuares(double azuares) {
-        this.azuares = azuares;
+        this.azucares = azuares;
     }
 
     public double getAzuares() {
-        return azuares;
+        return azucares;
     }
 
     public double getSodio() {
@@ -178,7 +184,7 @@ public class Alimento {
             ",\n  preferencia=" + preferencia +
             ",\n  proteina=" + proteina +
             ",\n  carbohidratos=" + carbohidratos +
-            ",\n  azuares=" + azuares +
+            ",\n  azuares=" + azucares +
             ",\n  sodio=" + sodio +
             ",\n  grasas=" + grasas;
     }

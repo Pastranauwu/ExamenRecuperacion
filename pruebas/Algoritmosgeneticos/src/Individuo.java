@@ -6,8 +6,10 @@ import java.util.List;
  * asociado.
  */
 /**
- * La clase Individuo representa un individuo en un algoritmo genético que selecciona alimentos
- * y calcula su valor de fitness basado en varios factores nutricionales y restricciones.
+ * La clase Individuo representa un individuo en un algoritmo genético que
+ * selecciona alimentos
+ * y calcula su valor de fitness basado en varios factores nutricionales y
+ * restricciones.
  */
 public class Individuo {
     // Lista de alimentos seleccionados por el individuo.
@@ -19,10 +21,6 @@ public class Individuo {
     // Calorías recomendadas diarias.
 
     private static int calorias_recomendadas = 2000;
-
-    // Penalización por calorías excedidas.
-    // 0.9: calorías medianamente importantes, 0.2: poco importantes, 1.5: muy importantes.
-    private static double penalizacionCalorias = 0.9;
 
     // Peso máximo permitido para la selección de alimentos.
     private static double MAX_PESO = calorias_recomendadas;
@@ -37,13 +35,16 @@ public class Individuo {
         this.seleccion = seleccion;
         calcularFitness();
     }
+
     public Individuo() {
 
     }
 
     /**
-     * Calcula el valor de fitness del individuo basado en la selección de alimentos.
-     * Se considera el peso total, valor nutricional, calorías totales y posibles penalizaciones.
+     * Calcula el valor de fitness del individuo basado en la selección de
+     * alimentos.
+     * Se considera el peso total, valor nutricional, calorías totales y posibles
+     * penalizaciones.
      */
     public void calcularFitness() {
         double pesoTotal = getPesoTotal();
@@ -53,7 +54,7 @@ public class Individuo {
         double carbohidratosTotal = getCarbohidratosTotal();
         double sodioTotal = getSodioTotal();
         double grasasTotal = getGrasasTotal();
-        // double azucaresTotal = getAzucaresTotal();
+        double azucaresTotal = getAzucaresTotal();
 
         if (pesoTotal > MAX_PESO) {
             // Penalización proporcional al exceso de peso.
@@ -61,14 +62,14 @@ public class Individuo {
         } else {
             // Calcular el fitness basado en valor nutricional y calorías.
             fitness = (15 * valorNutricionalTotal)
-                    + bonificacionPorCaloriasAdecuadas(caloriasTotal)
+                    + (10* bonificacionPorCaloriasAdecuadas(caloriasTotal))
                     + (2 * bonificacionPorProteinaAdecuada(proteinaTotal))
                     - (2 * penalizacionPorExcesoDeSodio(sodioTotal))
                     - penalizacionPorExcesoDeGrasas(grasasTotal)
-                    - penalizacionPorExcesoDeCarbohidratos(carbohidratosTotal);
+                    - penalizacionPorExcesoDeCarbohidratos(carbohidratosTotal)
+                    - penalizacionPorExcesoDeAzucares(azucaresTotal);
         }
     }
-
 
     private double bonificacionPorProteinaAdecuada(double proteinaTotal) {
         if (proteinaTotal >= 50 && proteinaTotal <= 70) {
@@ -105,18 +106,20 @@ public class Individuo {
         return 0; // Sin penalización si está dentro del límite.
     }
 
+    private double penalizacionPorExcesoDeAzucares(double azucaresTotal) {
+        if (azucaresTotal > 50) {
+            return (azucaresTotal - 50) * 0.1; // Penalización por exceso de azúcares.
+        }
+        return 0; // Sin penalización si está dentro del límite.
+    }
+
     public double getProteinaTotal() {
         return seleccion.stream().mapToDouble(Alimento::getProteina).sum();
     }
 
-    // public double getAzucaresTotal() {
-    //     return seleccion.stream().mapToDouble(Alimento::getAzucares).sum();
-    // }
-
     public double getCarbohidratosTotal() {
         return seleccion.stream().mapToDouble(Alimento::getCarbohidratos).sum();
     }
-
 
     public double getSodioTotal() {
         return seleccion.stream().mapToDouble(Alimento::getSodio).sum();
@@ -124,6 +127,10 @@ public class Individuo {
 
     public double getGrasasTotal() {
         return seleccion.stream().mapToDouble(Alimento::getGrasas).sum();
+    }
+
+    public double getAzucaresTotal() {
+        return seleccion.stream().mapToDouble(Alimento::getAzucares).sum();
     }
 
     /**
@@ -193,7 +200,5 @@ public class Individuo {
      *
      * @param penalizacion Nuevo valor de penalización.
      */
-    public static void setPenalizacionCalorias(double penalizacion) {
-        penalizacionCalorias = penalizacion;
-    }
+
 }
