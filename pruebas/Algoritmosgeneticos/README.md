@@ -1,3 +1,4 @@
+/*
 # Problema de la Mochila y Algoritmos Genéticos
 
 ## Introducción
@@ -15,7 +16,6 @@ Este proyecto en Java implementa un algoritmo genético para resolver el problem
 ### Estructura del Proyecto
 
 - **src/**: Contiene el código fuente del proyecto.
-    - **Main.java**: Punto de entrada del programa.
         - **AlgoritmoGenetico.java**: Implementación del algoritmo genético, encargado de las poblaciones, sus mutaciones y cruces.
         - **ProblemaMochila.java**: Genera los datos a partir de un JSON para el ArrayList e imprime la mejor solución.
         - **Individuo.java**: Representación de una solución dentro de su población.
@@ -31,7 +31,6 @@ Este proyecto en Java implementa un algoritmo genético para resolver el problem
 6. **Reemplazo**: Las nuevas soluciones reemplazan a las antiguas en la población.
 7. **Iteración**: El proceso se repite hasta alcanzar un criterio de parada.
 
-
 ## Optimización de Dieta
 
 Este proyecto no solo se limita a resolver el problema de la mochila, sino que también se aplica a la optimización de una dieta. El algoritmo genético se utiliza para encontrar la mejor combinación de alimentos que maximice el valor nutricional, respete las preferencias personales, se ajuste al presupuesto disponible y mantenga las calorías dentro de un rango deseado.
@@ -42,21 +41,13 @@ Este proyecto no solo se limita a resolver el problema de la mochila, sino que t
 - **Valor Nutricional**: Se busca maximizar el valor nutricional total de la dieta.
 - **Preferencias**: Se tienen en cuenta las preferencias personales para incluir o excluir ciertos alimentos.
 - **Calorías**: La dieta debe cumplir con un rango específico de calorías diarias.
+- **Proteínas**: La dieta debe ser rica en proteínas.
+- **Sodio**: La dieta debe ser baja en sodio.
+- **Grasas**: La dieta debe ser baja en grasas.
+- **Carbohidratos**: La dieta debe tener un nivel normal de carbohidratos.
 
 ### Ejemplo de Uso
 
 Para ejecutar el proyecto con un enfoque en la optimización de la dieta, compila y ejecuta el archivo `problemaMochila.java`. El programa imprimirá la mejor combinación de alimentos encontrada, su valor nutricional total, el costo y las calorías.
 
-```sh
-javac src/problemaMochila.java
-java bin/Main
-```
-
-Es necesario importar la libreria para poder leer el formato JSON json-simple-1.1.1.jar
-
-Este enfoque permite personalizar la dieta según las necesidades y restricciones individuales, proporcionando una herramienta poderosa para la planificación de dietas saludables y económicas.
-
-## Conclusión
-
-Este proyecto demuestra cómo los algoritmos genéticos pueden ser aplicados para resolver problemas complejos como el problema de la mochila. La implementación en Java proporciona una base sólida para experimentar con diferentes configuraciones y mejorar el rendimiento del algoritmo.
 
