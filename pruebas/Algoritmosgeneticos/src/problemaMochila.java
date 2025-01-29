@@ -9,6 +9,7 @@ import java.util.HashSet;
 
 import java.io.FileReader;
 
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -32,7 +33,7 @@ public class problemaMochila {
     public static void main(String[] args) throws Exception {
         List<Alimento> alimentos = new ArrayList<>();
         JSONParser parser = new JSONParser();
-        FileReader reader = new FileReader("src/alimentos_modificados.json");
+        FileReader reader = new FileReader("src/alimentosV2.json");
         Object obj = parser.parse(reader);
         JSONObject pJsonObj = (JSONObject)obj;
         JSONArray array = (JSONArray)pJsonObj.get("alimentos");
@@ -46,26 +47,39 @@ public class problemaMochila {
             if (!nombresSet.add(nombre)) {
                 System.out.println(nombre);
                 System.out.println("Error: Hay alimentos con nombres repetidos");
-                return;
+                // return;
             }
+            
         }
         
+        // System.exit(0);
         //Generar lista de alimentos
         for (int i = 0; i < array.size(); i++) {
             JSONObject jsonAlimentos = (JSONObject) array.get(i);
             
             String nombre = (String) jsonAlimentos.get("nombre");
             
-            // Verificar si los valores no son nulos antes de convertirlos
-            Double peso = jsonAlimentos.get("peso") != null ? ((Number) jsonAlimentos.get("peso")).doubleValue() : 0.0;
-            Double valorNutricional = jsonAlimentos.get("valorNutricional") != null ? ((Number) jsonAlimentos.get("valorNutricional")).doubleValue() : 0.0;
+            // // Verificar si los valores no son nulos antes de convertirlos
             Double calorias = jsonAlimentos.get("calorias") != null ? ((Number) jsonAlimentos.get("calorias")).doubleValue() : 0.0;
+            Double valorNutricional = jsonAlimentos.get("valorNutricional") != null ? ((Number) jsonAlimentos.get("valorNutricional")).doubleValue() : 0.0;
             Double preferencia = jsonAlimentos.get("preferencia") != null ? ((Number) jsonAlimentos.get("preferencia")).doubleValue() : 0.0;
             Double gramos = jsonAlimentos.get("cantidadEnGramos") != null ? ((Number) jsonAlimentos.get("cantidadEnGramos")).doubleValue() : 0.0;
-        
+            Double proteina = jsonAlimentos.get("proteinas") != null ? ((Number) jsonAlimentos.get("proteinas")).doubleValue() : 0.0;
+            Double carbohidratos = jsonAlimentos.get("carbohidratos") != null ? ((Number) jsonAlimentos.get("carbohidratos")).doubleValue() : 0.0;
+            Double azucares = jsonAlimentos.get("azucares") != null ? ((Number) jsonAlimentos.get("azucares")).doubleValue() : 0.0;
+            Double sodio = jsonAlimentos.get("sodio") != null ? ((Number) jsonAlimentos.get("sodio")).doubleValue() : 0.0;
+            Double grasas = jsonAlimentos.get("grasas") != null ? ((Number) jsonAlimentos.get("grasas")).doubleValue() : 0.0;
+
+            alimentos.add(new Alimento(nombre, gramos, valorNutricional, calorias, preferencia, proteina, carbohidratos, azucares, sodio, grasas));
+            // Double peso = jsonAlimentos.get("peso") != null ? ((Number) jsonAlimentos.get("peso")).doubleValue() : 0.0;
+            // Double valorNutricional = jsonAlimentos.get("valorNutricional") != null ? ((Number) jsonAlimentos.get("valorNutricional")).doubleValue() : 0.0;
+            // Double calorias = jsonAlimentos.get("calorias") != null ? ((Number) jsonAlimentos.get("calorias")).doubleValue() : 0.0;
+            // Double preferencia = jsonAlimentos.get("preferencia") != null ? ((Number) jsonAlimentos.get("preferencia")).doubleValue() : 0.0;
+            // Double gramos = jsonAlimentos.get("cantidadEnGramos") != null ? ((Number) jsonAlimentos.get("cantidadEnGramos")).doubleValue() : 0.0;
+            // System.out.println( i +") Nombre: " + nombre);
             // Crear un nuevo objeto Alimento y agregarlo a la lista
             // System.out.println( i +") Nombre: " + nombre + " Peso: " + peso + " Valor Nutricional: " + valorNutricional + " Calorias: " + calorias);
-            alimentos.add(new Alimento(nombre, peso, valorNutricional, calorias, preferencia, gramos));
+            // alimentos.add(new Alimento(nombre, peso, valorNutricional, calorias, preferencia, gramos));
         }
 
         int numHilos = 8;
@@ -94,13 +108,11 @@ public class problemaMochila {
 
         System.out.println("Mejor solución encontrada: " + mejorGlobal.getFitness() + " de fitness."
                 + "\nAlimentos seleccionados:");
-        double precioTotal = 0.0;
+        double calorias = 0.0;
         for (Alimento alimento : mejorGlobal.getSeleccion()) {
-            System.out.println(alimento.getNombre() + " - Precio: " + alimento.getPeso() + " MXN " + " Calorías: "
-                    + alimento.getCalorias() + " kcal, Valor Nutricional: " + alimento.getValorNutricional() + ", Preferencia: " + alimento.getPreferencia() + " gramos: " + alimento.getGramos());
-            precioTotal += alimento.getPeso();
+            System.out.println(alimento.toString());
+            calorias += alimento.getCalorias();
         }
-        System.out.println("Precio total: " + precioTotal + " MXN, Calorías totales: "
-                + mejorGlobal.getCaloriasTotales() + " Valor nutricional " + mejorGlobal.getValorNutricionalTotal());
+        System.out.println("Calorías totales: " + calorias);
     }
 }

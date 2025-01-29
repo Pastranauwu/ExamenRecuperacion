@@ -59,9 +59,9 @@ public class AlgoritmoGenetico implements Runnable {
                     // Ajustar probabilidad de mutación dentro del rango permitido
                     probabilidadMutacion = ajustarProbabilidadMutacion(probabilidadMutacion);
 
-                    // System.out.printf(
-                    //         "Generación: %d | Mejor Fitness: %.2f | Diversidad: %.3f | Probabilidad Mutación: %d%%%n",
-                    //         generacion, mejorFitness, aux, probabilidadMutacion);
+                    System.out.printf(
+                            "Generación: %d | Mejor Fitness: %.2f | Diversidad: %.3f | Probabilidad Mutación: %d%%%n",
+                            generacion, mejorFitness, aux, probabilidadMutacion);
                 }
                 registrarEstadisticas(poblacion, generacion);
             }

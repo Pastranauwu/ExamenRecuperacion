@@ -10,7 +10,7 @@ public class Alimento {
     /**
      * El peso del alimento en gramos.
      */
-    private double peso;
+    private double calorias;
 
     /**
      * El valor nutricional del alimento.
@@ -20,14 +20,22 @@ public class Alimento {
     /**
      * Las calorías del alimento.
      */
-    private double calorias;
+    private double preferencia;
 
     /**
      * La preferencia del alimento.
      */
-    private double preferencia;
+    private double cantidadEnGramos;
 
-    private double gramos;
+    private double proteina;
+
+    private double carbohidratos;
+
+    private double azuares;
+
+    private double sodio;
+
+    private double grasas;
 
     /**
      * Constructor para crear una instancia de Alimento.
@@ -38,20 +46,25 @@ public class Alimento {
      * @param calorias Las calorías del alimento.
      * @param preferencia La preferencia del alimento.
      */
-    public Alimento(String nombre, double peso, double valorNutricional, double calorias, double preferencia) {
+    public Alimento(String nombre, double cantidadEnGramos, double valorNutricional, double calorias, double preferencia) {
         this.nombre = nombre;
-        this.peso = peso;
+        this.cantidadEnGramos = cantidadEnGramos;
         this.valorNutricional = valorNutricional;
         this.calorias = calorias;
         this.preferencia = preferencia;
     }
-    public Alimento(String nombre, double peso, double valorNutricional, double calorias, double preferencia, double gramos) {
+
+    public Alimento(String nombre, double cantidadEnGramos, double valorNutricional, double calorias, double preferencia, double proteina, double carbohidratos, double azuares, double sodio, double grasas) {
         this.nombre = nombre;
-        this.peso = peso;
+        this.cantidadEnGramos = cantidadEnGramos;
         this.valorNutricional = valorNutricional;
         this.calorias = calorias;
         this.preferencia = preferencia;
-        this.gramos = gramos;
+        this.proteina = proteina;
+        this.carbohidratos = carbohidratos;
+        this.azuares = azuares;
+        this.sodio = sodio;
+        this.grasas = grasas;
     }
 
     /**
@@ -63,13 +76,8 @@ public class Alimento {
         return nombre;
     }
 
-    /**
-     * Obtiene el peso del alimento.
-     *
-     * @return El peso del alimento en gramos.
-     */
-    public double getPeso() {
-        return peso;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
@@ -81,6 +89,10 @@ public class Alimento {
         return valorNutricional;
     }
 
+    public void setValorNutricional(double valorNutricional) {
+        this.valorNutricional = valorNutricional;
+    }
+
     /**
      * Obtiene las calorías del alimento.
      *
@@ -88,6 +100,10 @@ public class Alimento {
      */
     public double getCalorias() {
         return calorias;
+    }
+
+    public void setCalorias(double calorias) {
+        this.calorias = calorias;
     }
 
     /**
@@ -98,7 +114,72 @@ public class Alimento {
     public double getPreferencia() {
         return preferencia;
     }
-    public double getGramos() {
-        return gramos;
+
+    public void setPreferencia(double preferencia) {
+        this.preferencia = preferencia;
+    }
+
+    public double getCantidadEnGramos() {
+        return cantidadEnGramos;
+    }
+
+    public void setCantidadEnGramos(double cantidadEnGramos) {
+        this.cantidadEnGramos = cantidadEnGramos;
+    }
+
+    public double getProteina() {
+        return proteina;
+    }
+
+    public void setProteina(double proteina) {
+        this.proteina = proteina;
+    }
+
+    public double getCarbohidratos() {
+        return carbohidratos;
+    }
+
+    public void setCarbohidratos(double carbohidratos) {
+        this.carbohidratos = carbohidratos;
+    }
+
+
+    public void setAzuares(double azuares) {
+        this.azuares = azuares;
+    }
+
+    public double getAzuares() {
+        return azuares;
+    }
+
+    public double getSodio() {
+        return sodio;
+    }
+
+    public void setSodio(double sodio) {
+        this.sodio = sodio;
+    }
+
+    public double getGrasas() {
+        return grasas;
+    }
+
+    public void setGrasas(double grasas) {
+        this.grasas = grasas;
+    }
+
+    @Override
+    public String toString() {
+        return
+            "\n  nombre='" + nombre + '\'' +
+            ",\n  cantidadEnGramos=" + cantidadEnGramos +
+            ",\n  valorNutricional=" + valorNutricional +
+            ",\n  calorias=" + calorias +
+            ",\n  preferencia=" + preferencia +
+            ",\n  proteina=" + proteina +
+            ",\n  carbohidratos=" + carbohidratos +
+            ",\n  azuares=" + azuares +
+            ",\n  sodio=" + sodio +
+            ",\n  grasas=" + grasas;
     }
 }

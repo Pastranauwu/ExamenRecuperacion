@@ -5,6 +5,10 @@ import java.util.List;
  * Cada individuo tiene una selección de alimentos y un valor de fitness
  * asociado.
  */
+/**
+ * La clase Individuo representa un individuo en un algoritmo genético que selecciona alimentos
+ * y calcula su valor de fitness basado en varios factores nutricionales y restricciones.
+ */
 public class Individuo {
     // Lista de alimentos seleccionados por el individuo.
     private List<Alimento> seleccion;
@@ -18,10 +22,10 @@ public class Individuo {
 
     // Penalización por calorías excedidas.
     // 0.9: calorías medianamente importantes, 0.2: poco importantes, 1.5: muy importantes.
-    private static double penalizacionCalorias = 0.9;
+    private static double penalizacionCalorias = 0.2;
 
     // Peso máximo permitido para la selección de alimentos.
-    private static final double MAX_PESO = 1200;
+    private static double MAX_PESO = calorias_recomendadas;
 
     /**
      * Constructor de la clase Individuo.
@@ -45,45 +49,88 @@ public class Individuo {
         double pesoTotal = getPesoTotal();
         double valorNutricionalTotal = getValorNutricionalTotal();
         double caloriasTotal = getCaloriasTotales();
+        double proteinaTotal = getProteinaTotal();
+        double carbohidratosTotal = getCarbohidratosTotal();
+        double sodioTotal = getSodioTotal();
+        double grasasTotal = getGrasasTotal();
+        // double azucaresTotal = getAzucaresTotal();
 
         if (pesoTotal > MAX_PESO) {
             // Penalización proporcional al exceso de peso.
             fitness = (MAX_PESO / pesoTotal) * valorNutricionalTotal;
         } else {
             // Calcular el fitness basado en valor nutricional y calorías.
-            fitness = (10 * valorNutricionalTotal)
+            fitness = (15 * valorNutricionalTotal)
                     - penalizacionPorCalorias(caloriasTotal)
-                    + bonificacionPorCaloriasAdecuadas(caloriasTotal);
+                    + bonificacionPorCaloriasAdecuadas(caloriasTotal)
+                    + (2 * bonificacionPorProteinaAdecuada(proteinaTotal))
+                    - (2 * penalizacionPorExcesoDeSodio(sodioTotal))
+                    - penalizacionPorExcesoDeGrasas(grasasTotal)
+                    - penalizacionPorExcesoDeCarbohidratos(carbohidratosTotal);
         }
     }
 
-    /**
-     * Calcula la bonificación por mantener las calorías cercanas al objetivo.
-     *
-     * @param caloriasTotal Calorías totales de los alimentos seleccionados.
-     * @return Bonificación calculada.
-     */
-    private double bonificacionPorCaloriasAdecuadas(double caloriasTotal) {
-        double diferencia = Math.abs(caloriasTotal - calorias_recomendadas);
-        if (diferencia <= 100) {
-            return 10; // Bonificación máxima si está dentro de 100 calorías.
-        } else if (diferencia <= 300) {
-            return 5; // Bonificación reducida si está dentro de 300 calorías.
-        }
-        return 0; // Sin bonificación si está muy lejos.
-    }
-
-    /**
-     * Calcula la penalización por exceder las calorías recomendadas.
-     *
-     * @param caloriasTotal Calorías totales de los alimentos seleccionados.
-     * @return Penalización calculada.
-     */
     private double penalizacionPorCalorias(double caloriasTotal) {
-        if (caloriasTotal <= calorias_recomendadas) {
-            return 0;
+        if (caloriasTotal > calorias_recomendadas) {
+            return (caloriasTotal - calorias_recomendadas) * penalizacionCalorias;
         }
-        return (caloriasTotal - calorias_recomendadas) * penalizacionCalorias;
+        return 0;
+    }
+
+    private double bonificacionPorProteinaAdecuada(double proteinaTotal) {
+        if (proteinaTotal >= 50 && proteinaTotal <= 70) {
+            return 10; // Bonificación máxima si la proteína está en el rango adecuado.
+        }
+        return 0; // Sin bonificación si está fuera del rango.
+    }
+
+    private double bonificacionPorCaloriasAdecuadas(double caloriasTotal) {
+        if (caloriasTotal >= 1800 && caloriasTotal <= 2200) {
+            return 5; // Bonificación si las calorías están en el rango adecuado.
+        }
+        return 0; // Sin bonificación si está fuera del rango.
+    }
+
+    private double penalizacionPorExcesoDeSodio(double sodioTotal) {
+        if (sodioTotal > 2300) {
+            return (sodioTotal - 2300) * 0.1; // Penalización por exceso de sodio.
+        }
+        return 0; // Sin penalización si está dentro del límite.
+    }
+
+    private double penalizacionPorExcesoDeGrasas(double grasasTotal) {
+        if (grasasTotal > 70) {
+            return (grasasTotal - 70) * 0.1; // Penalización por exceso de grasas.
+        }
+        return 0; // Sin penalización si está dentro del límite.
+    }
+
+    private double penalizacionPorExcesoDeCarbohidratos(double carbohidratosTotal) {
+        if (carbohidratosTotal > 300) {
+            return (carbohidratosTotal - 300) * 0.1; // Penalización por exceso de carbohidratos.
+        }
+        return 0; // Sin penalización si está dentro del límite.
+    }
+
+    public double getProteinaTotal() {
+        return seleccion.stream().mapToDouble(Alimento::getProteina).sum();
+    }
+
+    // public double getAzucaresTotal() {
+    //     return seleccion.stream().mapToDouble(Alimento::getAzucares).sum();
+    // }
+
+    public double getCarbohidratosTotal() {
+        return seleccion.stream().mapToDouble(Alimento::getCarbohidratos).sum();
+    }
+
+
+    public double getSodioTotal() {
+        return seleccion.stream().mapToDouble(Alimento::getSodio).sum();
+    }
+
+    public double getGrasasTotal() {
+        return seleccion.stream().mapToDouble(Alimento::getGrasas).sum();
     }
 
     /**
@@ -92,14 +139,15 @@ public class Individuo {
      * @return Peso total.
      */
     public double getPesoTotal() {
-        return seleccion.stream().mapToDouble(Alimento::getPeso).sum();
-    }
+        return seleccion.stream().mapToDouble(Alimento::getCantidadEnGramos).sum();
+    } // <-- Cierre de llave añadido
 
     /**
      * Calcula el valor nutricional total de los alimentos seleccionados.
      *
      * @return Valor nutricional total.
      */
+
     public double getValorNutricionalTotal() {
         return seleccion.stream()
                 .mapToDouble(alimento -> alimento.getValorNutricional() * alimento.getPreferencia())
