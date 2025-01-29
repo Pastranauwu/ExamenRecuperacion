@@ -603,7 +603,7 @@
         {
             "nombre": "Refresco",
             "calorias": 41,
-            "valorNutricional": 0.8,
+            "valorNutricional": 0.08,
             "preferencia": 0.75,
             "cantidadEnGramos": 100,
             "proteinas": 0,
@@ -639,7 +639,7 @@
         {
             "nombre": "Whisky",
             "calorias": 250,
-            "valorNutricional": 0.8,
+            "valorNutricional": 0.08,
             "preferencia": 0.75,
             "cantidadEnGramos": 100,
             "proteinas": 0,
@@ -651,7 +651,7 @@
         {
             "nombre": "Café",
             "calorias": 2,
-            "valorNutricional": 0.8,
+            "valorNutricional": 0.3,
             "preferencia": 0.75,
             "cantidadEnGramos": 100,
             "proteinas": 0.1,

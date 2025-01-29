@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
 import re
 from collections import defaultdict
+
+# Aplicar estilo de seaborn
+sns.set(style="whitegrid")
 
 # Leer el archivo
 file_path = "estadisticas.txt"
@@ -22,12 +26,15 @@ for match in matches:
     hilos_data[hilo]['fitness'].append(fitness)
 
 # Configuración de la gráfica
-fig, axes = plt.subplots(nrows=4,ncols=2, figsize=(16, 12), constrained_layout=True)
+fig, axes = plt.subplots(nrows=4, ncols=2, figsize=(16, 12), constrained_layout=True)
 axes = axes.flatten()  # Aplanar los ejes para iterar más fácilmente
 i = 1
+# Colores para las gráficas
+colors = sns.color_palette("husl", len(hilos_data))
+
 # Graficar cada hilo
-for ax, (hilo, data) in zip(axes, hilos_data.items()):
-    ax.plot(data['generations'], data['fitness'], label=f'Hilo: {hilo}', marker='o', linestyle='-')
+for ax, (hilo, data), color in zip(axes, hilos_data.items(), colors):
+    ax.plot(data['generations'], data['fitness'], label=f'Hilo: {hilo}', marker='o', linestyle='-', color=color)
     ax.set_title(f'Desempeño de la poblacion {i}', fontsize=12) 
     i += 1
     ax.set_xlabel('Generación', fontsize=10)
@@ -35,7 +42,7 @@ for ax, (hilo, data) in zip(axes, hilos_data.items()):
     ax.grid(True, linestyle='--', linewidth=0.5)
     ax.legend(fontsize=8)
 
-# Ocultar ejes sobrantes si hay menos de 6 hilos
+# Ocultar ejes sobrantes si hay menos de 8 hilos
 for ax in axes[len(hilos_data):]:
     ax.axis('off')
 

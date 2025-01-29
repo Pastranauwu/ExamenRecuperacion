@@ -1,0 +1,310 @@
+{
+    "alimentos": [
+        {
+            "nombre": "Manzana"
+        },
+        {
+            "nombre": "Plátano"
+        },
+        {
+            "nombre": "Pera"
+        },
+        {
+            "nombre": "Naranja"
+        },
+        {
+            "nombre": "Sandía"
+        },
+        {
+            "nombre": "Fresa"
+        },
+        {
+            "nombre": "Mango"
+        },
+        {
+            "nombre": "Papaya"
+        },
+        {
+            "nombre": "Kiwi"
+        },
+        {
+            "nombre": "Uvas"
+        },
+        {
+            "nombre": "Piña"
+        },
+        {
+            "nombre": "Melón"
+        },
+        {
+            "nombre": "Cereza"
+        },
+        {
+            "nombre": "Arándano"
+        },
+        {
+            "nombre": "Frambuesa"
+        },
+        {
+            "nombre": "Espinaca"
+        },
+        {
+            "nombre": "Zanahoria"
+        },
+        {
+            "nombre": "Brócoli"
+        },
+        {
+            "nombre": "Lechuga"
+        },
+        {
+            "nombre": "Pepino"
+        },
+        {
+            "nombre": "Tomate"
+        },
+        {
+            "nombre": "Pimiento"
+        },
+        {
+            "nombre": "Cebolla"
+        },
+        {
+            "nombre": "Ajo"
+        },
+        {
+            "nombre": "Papa"
+        },
+        {
+            "nombre": "Calabaza"
+        },
+        {
+            "nombre": "Champiñón"
+        },
+        {
+            "nombre": "Aguacate"
+        },
+        {
+            "nombre": "Aceituna"
+        },
+        {
+            "nombre": "Nuez"
+        },
+        {
+            "nombre": "Pistacho"
+        },
+        {
+            "nombre": "Cacahuate"
+        },
+        {
+            "nombre": "Huevo"
+        },
+        {
+            "nombre": "Pollo"
+        },
+        {
+            "nombre": "Pescado"
+        },
+        {
+            "nombre": "Carne"
+        },
+        {
+            "nombre": "Queso"
+        },
+        {
+            "nombre": "Leche"
+        },
+        {
+            "nombre": "Yogurt"
+        },
+        {
+            "nombre": "Pan"
+        },
+        {
+            "nombre": "Tortilla"
+        },
+        {
+            "nombre": "Arroz"
+        },
+        {
+            "nombre": "Pasta"
+        },
+        {
+            "nombre": "Frijol"
+        },
+        {
+            "nombre": "Lenteja"
+        },
+        {
+            "nombre": "Garbanzo"
+        },
+        {
+            "nombre": "Chocolate"
+        },
+        {
+            "nombre": "Galleta"
+        },
+        {
+            "nombre": "Pastel"
+        },
+        {
+            "nombre": "Helado"
+        },
+        {
+            "nombre": "Refresco"
+        },
+        {
+            "nombre": "Cerveza"
+        },
+        {
+            "nombre": "Vino"
+        },
+        {
+            "nombre": "Whisky"
+        },
+        {
+            "nombre": "Café"
+        },
+        {
+            "nombre": "Té"
+        },
+        {
+            "nombre": "Agua"
+        },
+        {
+            "nombre": "Jugo"
+        },
+        {
+            "nombre": "Licuado"
+        },
+        {
+            "nombre": "Smoothie"
+        },
+        {
+            "nombre": "Sopa"
+        },
+        {
+            "nombre": "Puré"
+        },
+        {
+            "nombre": "Salmón"
+        },
+        {
+            "nombre": "Arándanos"
+        },
+        {
+            "nombre": "Chícharo"
+        },
+        {
+            "nombre": "Maíz"
+        },
+        {
+            "nombre": "Cereal de caja"
+        },
+        {
+            "nombre": "Amaranto"
+        },
+        {
+            "nombre": "Arroz integral"
+        },
+        {
+            "nombre": "Pasta integral"
+        },
+        {
+            "nombre": "Ensalada"
+        },
+        {
+            "nombre": "Hamburguesa"
+        },
+        {
+            "nombre": "Pizza"
+        },
+        {
+            "nombre": "Yogurt Griego"
+        },
+        {
+            "nombre": "Quinoa"
+        },
+        {
+            "nombre": "Tofu"
+        },
+        {
+            "nombre": "Chía"
+        },
+        {
+            "nombre": "Avena"
+        },
+        {
+            "nombre": "Almendra"
+        },
+        {
+            "nombre": "Nuez de la India"
+        },
+        {
+            "nombre": "Semillas de Girasol"
+        },
+        {
+            "nombre": "Lentejas"
+        },
+        {
+            "nombre": "Garbanzos"
+        },
+        {
+            "nombre": "Espárragos"
+        },
+        {
+            "nombre": "Remolacha"
+        },
+        {
+            "nombre": "Col Rizada"
+        },
+        {
+            "nombre": "Coliflor"
+        },
+        {
+            "nombre": "Berenjena"
+        },
+        {
+            "nombre": "Calabacín"
+        },
+        {
+            "nombre": "Pimiento Rojo"
+        },
+        {
+            "nombre": "Taco"
+        },
+        {
+            "nombre": "Tostada"
+        },
+        {
+            "nombre": "Tamal"
+        },
+        {
+            "nombre": "Chicharrón"
+        },
+        {
+            "nombre": "Tostilocos"
+        },
+        {
+            "nombre": "Torta"
+        },
+        {
+            "nombre": "Elote"
+        },
+        {
+            "nombre": "Churros"
+        },
+        {
+            "nombre": "Flan"
+        },
+        {
+            "nombre": "Pan de Muerto"
+        },
+        {
+            "nombre": "Rosca de Reyes"
+        },
+        {
+            "nombre": "Buñuelos"
+        }
+    ]
+}

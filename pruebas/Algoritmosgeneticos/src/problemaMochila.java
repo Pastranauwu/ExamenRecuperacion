@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.HashSet;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 import org.json.simple.JSONArray;
@@ -71,15 +73,6 @@ public class problemaMochila {
             Double grasas = jsonAlimentos.get("grasas") != null ? ((Number) jsonAlimentos.get("grasas")).doubleValue() : 0.0;
 
             alimentos.add(new Alimento(nombre, gramos, valorNutricional, calorias, preferencia, proteina, carbohidratos, azucares, sodio, grasas));
-            // Double peso = jsonAlimentos.get("peso") != null ? ((Number) jsonAlimentos.get("peso")).doubleValue() : 0.0;
-            // Double valorNutricional = jsonAlimentos.get("valorNutricional") != null ? ((Number) jsonAlimentos.get("valorNutricional")).doubleValue() : 0.0;
-            // Double calorias = jsonAlimentos.get("calorias") != null ? ((Number) jsonAlimentos.get("calorias")).doubleValue() : 0.0;
-            // Double preferencia = jsonAlimentos.get("preferencia") != null ? ((Number) jsonAlimentos.get("preferencia")).doubleValue() : 0.0;
-            // Double gramos = jsonAlimentos.get("cantidadEnGramos") != null ? ((Number) jsonAlimentos.get("cantidadEnGramos")).doubleValue() : 0.0;
-            // System.out.println( i +") Nombre: " + nombre);
-            // Crear un nuevo objeto Alimento y agregarlo a la lista
-            // System.out.println( i +") Nombre: " + nombre + " Peso: " + peso + " Valor Nutricional: " + valorNutricional + " Calorias: " + calorias);
-            // alimentos.add(new Alimento(nombre, peso, valorNutricional, calorias, preferencia, gramos));
         }
 
         int numHilos = 8;
@@ -112,6 +105,26 @@ public class problemaMochila {
         for (Alimento alimento : mejorGlobal.getSeleccion()) {
             System.out.println(alimento.toString());
             calorias += alimento.getCalorias();
+
+        }
+        // Crear un JSONArray para almacenar los nombres de los alimentos seleccionados
+        JSONArray alimentosSeleccionados = new JSONArray();
+        for (Alimento alimento : mejorGlobal.getSeleccion()) {
+            JSONObject jsonAlimento = new JSONObject();
+            jsonAlimento.put("nombre", alimento.getNombre());
+            alimentosSeleccionados.add(jsonAlimento);
+        }
+
+        // Crear un JSONObject para almacenar el arreglo de alimentos
+        JSONObject resultadoJson = new JSONObject();
+        resultadoJson.put("alimentos", alimentosSeleccionados);
+
+        // Escribir el resultado en un archivo JSON
+        try (FileWriter file = new FileWriter("alimentos_seleccionados.json")) {
+            file.write(resultadoJson.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         System.out.println("Calorías totales: " + calorias);
     }

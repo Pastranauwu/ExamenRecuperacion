@@ -22,7 +22,7 @@ public class Individuo {
 
     // Penalización por calorías excedidas.
     // 0.9: calorías medianamente importantes, 0.2: poco importantes, 1.5: muy importantes.
-    private static double penalizacionCalorias = 0.2;
+    private static double penalizacionCalorias = 0.9;
 
     // Peso máximo permitido para la selección de alimentos.
     private static double MAX_PESO = calorias_recomendadas;
@@ -61,7 +61,6 @@ public class Individuo {
         } else {
             // Calcular el fitness basado en valor nutricional y calorías.
             fitness = (15 * valorNutricionalTotal)
-                    - penalizacionPorCalorias(caloriasTotal)
                     + bonificacionPorCaloriasAdecuadas(caloriasTotal)
                     + (2 * bonificacionPorProteinaAdecuada(proteinaTotal))
                     - (2 * penalizacionPorExcesoDeSodio(sodioTotal))
@@ -70,12 +69,6 @@ public class Individuo {
         }
     }
 
-    private double penalizacionPorCalorias(double caloriasTotal) {
-        if (caloriasTotal > calorias_recomendadas) {
-            return (caloriasTotal - calorias_recomendadas) * penalizacionCalorias;
-        }
-        return 0;
-    }
 
     private double bonificacionPorProteinaAdecuada(double proteinaTotal) {
         if (proteinaTotal >= 50 && proteinaTotal <= 70) {
